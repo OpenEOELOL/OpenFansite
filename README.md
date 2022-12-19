@@ -6,6 +6,8 @@
 
 开源粉丝站，前端。
 
+我们 OpenEOELOL 欢迎你的贡献。
+
 ![Latest release](https://img.shields.io/github/v/tag/OpenEOELOL/OpenFansitePRO?label=version)
 ![License](https://img.shields.io/github/license/OpenEOELOL/OpenFansitePRO)
 </div>
@@ -35,7 +37,7 @@
 - EOE 工具人们和米诺、莞儿、虞莫、柚恩、露早。
 - EOES 们
 - 我的家人
-- AsAsFans 工作组
+- EOEFans 工作组
 - 哎呀米诺录播组
 - 温暖大家庭的家人们
 - 贡献者们
