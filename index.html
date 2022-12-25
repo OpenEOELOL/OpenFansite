@@ -17,7 +17,7 @@
         <div id="header">
             <div class="menu">
                 <div id="headerLeft">
-                    <span id="headerTitle">Openfansite</span>
+                    <span id="headerTitle">OpenFansite</span>
                     <div id="tab">
                         <a href="#homepage"><div>主页</div></a>
                         <a href="#videopage"><div>视频</div></a>
@@ -29,11 +29,36 @@
         </div>
         <div id="Pages">
             <div id="homepage" class="page">
-                主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>主页<br>
+                <div class="left">
+                    <div class="banner">
+                        <div>
+                            <button id="bannerButton">
+                                <span>立即查看</span>
+                                <img src="./src/left.svg" />
+                            </button>
+                        </div>
+                    </div>
+                    <img
+                        src="./src/依托蛞蝓.svg"
+                        style="height: 20%; margin: 2rem"
+                    />
+                </div>
+                <div class="right">视频图片混合列表</div>
             </div>
-            <div id="videopage" class="page">视频页</div>
+            <div id="videopage" class="page">
+                <div class="videoList" id="videoList">
+<a class="videoCard">
+                            <img src="./src/样例.png">
+                            <div>
+                                <div>{}</div>
+                                <div>[UP]{}</div>
+                            </div>
+                        </a>
+                </div>
+            </div>
             <div id="picpage" class="page">照片页</div>
         </div>
+        <script src="./src/masonry.pkgd.min.js"></script>
         <script src="./src/main.js"></script>
     </body>
 </html>

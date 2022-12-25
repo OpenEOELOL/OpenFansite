@@ -7,6 +7,20 @@ function tabActived(x) {
     tab.children[x].classList.add("actived");
 }
 
+var elem = document.querySelector(".videoList");
+var msnry = new Masonry(elem, {
+    // options
+    itemSelector: ".videoCard",
+    transitionDuration: 0,
+    percentPosition: true,
+});
+
+// element argument can be a selector string
+//   for an individual element
+var msnry = new Masonry(".videoList", {
+    // options
+});
+
 window.addEventListener("hashchange", function (event) {
     console.log(location.hash);
     //console.log(event);
@@ -37,3 +51,29 @@ if (location.hash == "") {
 if (hashPage.includes(location.hash)) {
     tabActived(hashPage.indexOf(location.hash));
 }
+
+document.getElementById("videoList").innerHTML = `<a class="videoCard">
+                            <img src="./src/样例.png">
+                            <div>
+                                <div>{}</div>
+                                <div>[UP]{}</div>
+                            </div>
+                        </a><a class="videoCard">
+                            <img src="./src/样例.png">
+                            <div>
+                                <div>{}</div>
+                                <div>[UP]{}</div>
+                            </div>
+                        </a><a class="videoCard">
+                            <img src="./src/样例.png">
+                            <div>
+                                <div>{}</div>
+                                <div>[UP]{}</div>
+                            </div>
+                        </a>`;
+
+setTimeout(function () {
+                            
+    msnry.reloadItems();
+    msnry.layout();
+                        }, 700);
