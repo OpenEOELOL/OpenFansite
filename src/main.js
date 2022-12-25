@@ -30,9 +30,9 @@ for (let i = 0; i < tabChildren.length; i++) {
     });
 }
 
-var hashPage = ["#homePage", "#videoPage", "#picPage"];
+var hashPage = ["#homepage", "#videopage", "#picpage"];
 if (location.hash == "") {
-    window.location.hash = "#homePage"
+    window.location.hash = "#homepage"
 }
 if (hashPage.includes(location.hash)) {
     tabActived(hashPage.indexOf(location.hash));
