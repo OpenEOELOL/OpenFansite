@@ -1,5 +1,7 @@
+// Menu 部分脚本 开始 //
 const tab = document.getElementById("tab");
 
+// 切换 tab 栏状态函数
 function tabActived(x) {
     for (var i = 0; i < tab.childElementCount; i++) {
         tab.children[i].classList.remove("actived");
@@ -7,25 +9,13 @@ function tabActived(x) {
     tab.children[x].classList.add("actived");
 }
 
-var elem = document.querySelector(".videoList");
-var msnry = new Masonry(elem, {
-    // options
-    itemSelector: ".videoCard",
-    transitionDuration: 0,
-    percentPosition: true,
-});
+// // 监听锚点
+// window.addEventListener("hashchange", function (event) {
+//     console.log(location.hash);
+//     //console.log(event);
+// });
 
-// element argument can be a selector string
-//   for an individual element
-var msnry = new Masonry(".videoList", {
-    // options
-});
-
-window.addEventListener("hashchange", function (event) {
-    console.log(location.hash);
-    //console.log(event);
-});
-
+// 监听 tab 栏按钮点击并调用切换状态
 // 这段 AI 写的
 // 为父元素的所有子元素添加点击事件监听器
 const tabChildren = tab.querySelectorAll("a");
@@ -39,41 +29,65 @@ for (let i = 0; i < tabChildren.length; i++) {
             tabClickedChild.parentNode.children,
             tabClickedChild
         );
-        console.log(`Child ${index + 1} was clicked!`);
+        //console.log(`Child ${index + 1} was clicked!`);
         tabActived(index);
     });
 }
 
-var hashPage = ["#homepage", "#videopage", "#picpage"];
+// 锚点列表激活
+let hashPage;
+hashPage = ["#homepage", "#videopage", "#picpage", "#tools"]; // 这部分是页面的顺序
 if (location.hash == "") {
+    // 如果没有定义默认跳转到首页
     window.location.hash = "#homepage"
 }
 if (hashPage.includes(location.hash)) {
+    // 激活对应页面的 tab
     tabActived(hashPage.indexOf(location.hash));
 }
+// Menu 部分脚本 结束 //
 
-document.getElementById("videoList").innerHTML = `<a class="videoCard">
-                            <img src="./src/样例.png">
-                            <div>
-                                <div>{}</div>
-                                <div>[UP]{}</div>
-                            </div>
-                        </a><a class="videoCard">
-                            <img src="./src/样例.png">
-                            <div>
-                                <div>{}</div>
-                                <div>[UP]{}</div>
-                            </div>
-                        </a><a class="videoCard">
-                            <img src="./src/样例.png">
-                            <div>
-                                <div>{}</div>
-                                <div>[UP]{}</div>
-                            </div>
-                        </a>`;
 
-setTimeout(function () {
-                            
+// 视频列表初始化
+let videoList;
+videoList = document.querySelector(".videoList");
+var msnry = new Masonry(videoList, {
+    // options
+    itemSelector: ".videoCard",
+    // columnWidth: ".videoSizer",
+    transitionDuration: 0,
+    percentPosition: true,
+});
+
+window.onload = function () {
     msnry.reloadItems();
     msnry.layout();
-                        }, 700);
+}; 
+
+function addVideoCard(link, cover, title, infomation) {
+    let videoCardNode;
+    videoCardNode = document.createElement("a");
+    videoCardNode.className = `videoCard`;
+    videoCardNode.innerHTML = `
+<img src="${cover}" />
+<div>
+    <div>${title}</div>
+    <div>${infomation}</div>
+</div>
+`;
+    let Attribute;
+    Attribute = document.createAttribute("href");
+    Attribute.value = link;
+    videoCardNode.setAttributeNode(Attribute);
+    videoList.appendChild(videoCardNode);
+    msnry.appended(videoCardNode);
+    msnry.layout();
+}
+
+
+addVideoCard("", "./src/样例.png", "title", "infomation");
+addVideoCard("", "./src/样例.png", "title", "infomation");
+addVideoCard("", "./src/样例.png", "title", "infomation");
+addVideoCard("", "./src/样例.png", "title", "infomation");
+addVideoCard("", "./src/样例.png", "title", "infomation");
+addVideoCard("", "./src/样例.png", "title", "infomation");

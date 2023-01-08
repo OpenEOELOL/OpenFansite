@@ -51,4 +51,3 @@
 - 温暖大家庭的家人们
 - 贡献者们
 - masonry，瀑布流布局实现 JavaScript 库。
-- mobilebone，页面切换实现 JavaScript 库。

@@ -110,23 +110,23 @@ html body {
 
 @-webkit-keyframes switchPage {
     0% {
-        opacity: 0;
-        transform: translateY(1%);
+        opacity: 0%;
+        transform: scale(95%);
     }
     100% {
-        opacity: 1;
-        transform: translateY(0%);
+        opacity: 100%;
+        transform: scale(100%);
     }
 }
 
 @keyframes switchPage {
     0% {
-        opacity: 0;
-        transform: translateY(1%);
+        opacity: 0%;
+        transform: scale(95%, 75%);
     }
     100% {
-        opacity: 1;
-        transform: translateY(0%);
+        opacity: 100%;
+        transform: scale(100%, 100%);
     }
 }
 
@@ -138,12 +138,13 @@ html body {
     left: 0;
     top: 0;
     opacity: 0;
+    overflow: auto;
 }
 
 :target {
-    -webkit-animation: switchPage 0.3s cubic-bezier(0, 0.88, 0, 0.97) 0.1s 1
+    -webkit-animation: switchPage 0.17s cubic-bezier(var(--cubic-bezier)) 0.1s 1
         forwards;
-    animation: switchPage 0.3s cubic-bezier(0, 0.88, 0, 0.97) 0.1s 1 forwards;
+    animation: switchPage 0.17s cubic-bezier(var(--cubic-bezier)) 0.1s 1 forwards;
     z-index: 2;
 }
 
@@ -163,13 +164,49 @@ html body {
     flex-direction: column;
     justify-content: right;
     padding-right: 1rem;
+    padding-left: 1rem;
+    background: linear-gradient(
+        95deg,
+        rgba(0, 0, 0, 0) 79.89%,
+        var(--homepage-background-color) 80.15%
+    );
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        transform: rotate(0turn);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0.7turn) scale(-0.8, 0.8);
+        background-color: #000000;
+        box-shadow: 2px 70px 10px #ff0000;
+    }
+    100% {
+        transform: rotate(2turn) scale(0.8, -0.8);
+        background-color: #f2b1d5;
+        box-shadow: 2px 2px 12px #00ffff;
+    }
+}
+
+#homepage > div:nth-of-type(1) > img {
+    border-radius: 100%;
+    width: 70px;
+    height: 10px;
+    -webkit-animation: linear 1s infinite alternate rotate;
+    animation: linear 1s infinite alternate rotate;
 }
 
 #homepage > div:nth-of-type(2) {
     display: flex;
     justify-content: left;
     padding-left: 1rem;
-    background-color: honeydew;
+    background-color: var(--homepage-background-color);
 }
 
 .banner {
@@ -200,14 +237,16 @@ html body {
 
 #bannerButton {
     margin: 0 1.5rem 1rem 0;
-    background: rgba(255, 255, 255, 0.24);
+    background: rgba(25, 25, 25, 0.48);
     border: 0 solid rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 1);
     border-radius: 16px;
-    padding: 0.8rem 1.4rem 1rem 1.4rem;
+    padding: 0.95rem 1.4rem 1rem 1.4rem;
     font-size: 1.2rem;
     line-height: 1em;
-    transition: 0.3s cubic-bezier(0, 0.88, 0, 0.97);
+    transition: 3s cubic-bezier(var(--cubic-bezier));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 #bannerButton > img {
@@ -223,7 +262,7 @@ html body {
 }
 
 #bannerButton:hover {
-    background-color: rgba(255, 255, 255, 0.45);
+    background-color: rgba(0, 0, 0, 0.80);
 }
 
 .videoList {
@@ -231,40 +270,52 @@ html body {
     margin: 0 auto;
 }
 
-.videoCard, .videoSizer {
-    width: 24.3%;
+.videoSizer,
+.videoCard {
+    width: 18%;
 }
 
 .videoCard {
-    border: 1px solid var(--accent-color);
+    border: 0.1rem solid var(--header-text-color);
+    background-color: var(--header-text-color);
     border-radius: var(--radius);
-    position: relative;
-    margin: 0.2%;
+    /* position: relative; */
     display: block;
+    margin: 0.3rem;
 }
 
 .videoCard > img {
     width: 100%;
     border-radius: var(--radius);
+    vertical-align: bottom;
 }
 
 .videoCard > div {
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
     background-image: linear-gradient(
         180deg,
         rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7) 
-    );
+        rgba(0, 0, 0, 0.7)
+    ); */
     color: white;
     width: 100%;
     border-radius: 0 0 var(--radius) var(--radius);
 }
 
-.videoCard > div > div:nth-of-type(1){
+.videoCard:link,
+.videoCard:visited {
+    text-decoration: none;
+}
+
+.videoCard > div > div {
+    padding-left: 0.2rem;
+}
+
+.videoCard > div > div:nth-of-type(1) {
     font-size: 1.2rem;
 }
 
-.videoCard > div > div:nth-of-type(2){
+.videoCard > div > div:nth-of-type(2) {
     font-size: 0.8rem;
 }

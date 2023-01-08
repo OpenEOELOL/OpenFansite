@@ -22,6 +22,7 @@
                         <a href="#homepage"><div>主页</div></a>
                         <a href="#videopage"><div>视频</div></a>
                         <a href="#picpage"><div>好图</div></a>
+                        <a href="#tools"><div>工具</div></a>
                     </div>
                 </div>
                 <div id="headerRight"><button>设置与关于</button></div>
@@ -46,17 +47,20 @@
                 <div class="right">视频图片混合列表</div>
             </div>
             <div id="videopage" class="page">
+                <button onclick='addVideoCard("", "./src/样例.png", "title", "infomation");'>添加视频</button>
                 <div class="videoList" id="videoList">
-<a class="videoCard">
-                            <img src="./src/样例.png">
-                            <div>
-                                <div>{}</div>
-                                <div>[UP]{}</div>
-                            </div>
-                        </a>
+                    <div class="videoSizer"></div>
+                    <!-- <a class="videoCard">
+                        <img src="./src/样例.png" />
+                        <div>
+                            <div>{}</div>
+                            <div>[UP]{}</div>
+                        </div>
+                    </a> -->
                 </div>
             </div>
             <div id="picpage" class="page">照片页</div>
+            <div id="tools" class="page">哎呀米诺</div>
         </div>
         <script src="./src/masonry.pkgd.min.js"></script>
         <script src="./src/main.js"></script>
