@@ -141,10 +141,15 @@ html body {
     overflow: auto;
 }
 
+.page:nth-of-type(2)::-webkit-scrollbar {
+    width: 0px;
+}
+
 :target {
     -webkit-animation: switchPage 0.17s cubic-bezier(var(--cubic-bezier)) 0.1s 1
         forwards;
-    animation: switchPage 0.17s cubic-bezier(var(--cubic-bezier)) 0.1s 1 forwards;
+    animation: switchPage 0.17s cubic-bezier(var(--cubic-bezier)) 0.1s 1
+        forwards;
     z-index: 2;
 }
 
@@ -212,7 +217,7 @@ html body {
 .banner {
     width: 100%;
     height: 50%;
-    background-image: url("./样例.png");
+    background-image: url("../example/example.png");
     background-size: cover;
     background-position: center;
     border-radius: var(--radius);
@@ -262,17 +267,21 @@ html body {
 }
 
 #bannerButton:hover {
-    background-color: rgba(0, 0, 0, 0.80);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .videoList {
     max-width: 50rem;
-    margin: 0 auto;
+    margin   : 0 auto;
 }
 
-.videoSizer,
+.videoList__col-sizer,
 .videoCard {
-    width: 18%;
+    width: 22%;
+}
+
+.videoList__gutter-sizer {
+    width: 3%;
 }
 
 .videoCard {
@@ -281,23 +290,16 @@ html body {
     border-radius: var(--radius);
     /* position: relative; */
     display: block;
-    margin: 0.3rem;
+    margin : 1%;
 }
 
 .videoCard > img {
-    width: 100%;
-    border-radius: var(--radius);
+    width         : 100%;
+    border-radius : var(--radius);
     vertical-align: bottom;
 }
 
 .videoCard > div {
-    /* position: absolute;
-    bottom: 0;
-    background-image: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.7)
-    ); */
     color: white;
     width: 100%;
     border-radius: 0 0 var(--radius) var(--radius);
@@ -318,4 +320,21 @@ html body {
 
 .videoCard > div > div:nth-of-type(2) {
     font-size: 0.8rem;
+}
+
+.page-load-status {
+    display: none; /* 使其默认隐藏 */
+    padding-top: 20px;
+    border-top: 1px solid var(--header-text-color);
+    text-align: center;
+    color: var(--header-text-color);
+}
+
+.view-more-button {
+    width           : 100%;
+    height          : 25vh;
+    font-size       : 2rem;
+    border          : 0;
+    border-top      : 0.1rem solid var(--accent-color);
+    background-color: rgba(0, 0, 0, 0);
 }

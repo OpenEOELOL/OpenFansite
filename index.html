@@ -47,22 +47,47 @@
                 <div class="right">视频图片混合列表</div>
             </div>
             <div id="videopage" class="page">
-                <button onclick='addVideoCard("", "./src/样例.png", "title", "infomation");'>添加视频</button>
-                <div class="videoList" id="videoList">
-                    <div class="videoSizer"></div>
-                    <!-- <a class="videoCard">
-                        <img src="./src/样例.png" />
-                        <div>
-                            <div>{}</div>
-                            <div>[UP]{}</div>
-                        </div>
-                    </a> -->
+                <i>数据由 EOEFans 提供。</i>
+
+                <div class="videoList">
+                    <div class="videoList__col-sizer"></div>
+                    <div class="videoList__gutter-sizer"></div>
                 </div>
+
+                <div class="page-load-status">
+                    <div class="loader-ellips infinite-scroll-request">
+                        <span class="loader-ellips__dot"></span>
+                        <span class="loader-ellips__dot"></span>
+                        <span class="loader-ellips__dot"></span>
+                        <span class="loader-ellips__dot"></span>
+                    </div>
+                    <p class="infinite-scroll-last">没有更多内容了</p>
+                    <p class="infinite-scroll-error">不能再加载了!</p>
+                </div>
+                <button class="view-more-button">加载更多</button>
             </div>
             <div id="picpage" class="page">照片页</div>
             <div id="tools" class="page">哎呀米诺</div>
         </div>
+
+        <!-- .photo-item template HTML -->
+        <script type="text/html" id="photo-item-template">
+            <div class="photo-item">
+                <img
+                    class="photo-item__image"
+                    src="${pic}"
+                    alt="Photo by ${pic}"
+                />
+                <p class="photo-item__caption">
+                    <a
+                        href="${name}?utm_source=infinite-scroll-demos&utm_medium=referral&utm_campaign=api-credit"
+                        >${name}</a
+                    >
+                </p>
+            </div>
+        </script>
         <script src="./src/masonry.pkgd.min.js"></script>
+        <script src="src/infinite-scroll.pkgd.min.js"></script>
         <script src="./src/main.js"></script>
     </body>
 </html>

@@ -21,7 +21,7 @@ function tabActived(x) {
 const tabChildren = tab.querySelectorAll("a");
 for (let i = 0; i < tabChildren.length; i++) {
     tabChildren[i].addEventListener("click", (event) => {
-        console.log(event)
+        console.log(event);
         // 获取点击的子元素
         const tabClickedChild = event.target.parentNode;
         // 获取点击的子元素的索引
@@ -39,7 +39,7 @@ let hashPage;
 hashPage = ["#homepage", "#videopage", "#picpage", "#tools"]; // 这部分是页面的顺序
 if (location.hash == "") {
     // 如果没有定义默认跳转到首页
-    window.location.hash = "#homepage"
+    window.location.hash = "#homepage";
 }
 if (hashPage.includes(location.hash)) {
     // 激活对应页面的 tab
@@ -47,47 +47,62 @@ if (hashPage.includes(location.hash)) {
 }
 // Menu 部分脚本 结束 //
 
+// 视频列表 部分脚本 开始 //
+// (这段其实压根就不是我写的 参考 Masonry 和 InfiniteScroll 官网展示的 codepen)
 
-// 视频列表初始化
-let videoList;
-videoList = document.querySelector(".videoList");
-var msnry = new Masonry(videoList, {
-    // options
+// 瀑布流插件初始化
+let video__msnry = new Masonry(".videoList", {
     itemSelector: ".videoCard",
-    // columnWidth: ".videoSizer",
-    transitionDuration: 0,
+    columnWidth: ".videoList__col-sizer",
+    gutter: ".videoList__gutter-sizer",
     percentPosition: true,
+    stagger: 30,
+    // nicer reveal transition
+    visibleStyle: { transform: "translateY(0)", opacity: 1 },
+    hiddenStyle: { transform: "translateY(100px)", opacity: 0 },
 });
 
-window.onload = function () {
-    msnry.reloadItems();
-    msnry.layout();
-}; 
+// 无限滚动插件初始化
+let video__infScroll = new InfiniteScroll(".videoList", {
+    path: function () {
+        return `http://127.0.0.1:5500/example/video1.json?${this.pageIndex}`;
+    },
+    responseBody: "json", // 响应体为 JSON 格式
+    outlayer: video__msnry,
+    status: ".page-load-status", // 加载状态
+    history: false, // 不展示历史
+    // prefill: true, // 预先加载
+    scrollThreshold: false, // 不需要滚动到底部加载
+    button: ".view-more-button", // 展示更多按钮定义
+});
 
-function addVideoCard(link, cover, title, infomation) {
-    let videoCardNode;
-    videoCardNode = document.createElement("a");
-    videoCardNode.className = `videoCard`;
-    videoCardNode.innerHTML = `
-<img src="${cover}" />
-<div>
-    <div>${title}</div>
-    <div>${infomation}</div>
-</div>
-`;
-    let Attribute;
-    Attribute = document.createAttribute("href");
-    Attribute.value = link;
-    videoCardNode.setAttributeNode(Attribute);
-    videoList.appendChild(videoCardNode);
-    msnry.appended(videoCardNode);
-    msnry.layout();
+// 转换 HTML 字符串到元素，用代理元素。
+var video__proxyElem = document.createElement("div");
+
+video__infScroll.on("load", function (body) {
+    // 数据转入 HTML 字符串
+    var video__itemsHTML = body["data"]["result"].map(getItemHTML).join("");
+    // 将 HTML 字符串转入到元素
+    video__proxyElem.innerHTML = video__itemsHTML;
+    // 添加元素物件
+    let video__items = video__proxyElem.querySelectorAll(".videoCard");
+    imagesLoaded(video__items, function () {
+        video__infScroll.appendItems(video__items);
+        video__msnry.appended(video__items);
+    });
+});
+
+// 加载一次先
+video__infScroll.loadNextPage();
+
+// 此处定义一下一个视频卡片物件的 HTML 代码
+function getItemHTML({ name, pic }) {
+    return `<a class="videoCard">
+    <img src = "${pic}" />
+    <div>
+        <div>${name}</div>
+        <div>${name}</div>
+    </div>
+</a>`;
 }
-
-
-addVideoCard("", "./src/样例.png", "title", "infomation");
-addVideoCard("", "./src/样例.png", "title", "infomation");
-addVideoCard("", "./src/样例.png", "title", "infomation");
-addVideoCard("", "./src/样例.png", "title", "infomation");
-addVideoCard("", "./src/样例.png", "title", "infomation");
-addVideoCard("", "./src/样例.png", "title", "infomation");
+// 视频列表 部分脚本 结束 //
