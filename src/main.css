@@ -338,3 +338,23 @@ html body {
     border-top      : 0.1rem solid var(--accent-color);
     background-color: rgba(0, 0, 0, 0);
 }
+
+.mask {
+    position       : absolute;
+    width          : 100%;
+    height         : 100%;
+    padding        : 0;
+    margin         : 0;
+    display        : flex;
+    justify-content: center;
+    align-items    : flex-end;
+}
+
+.tips {
+    position     : absolute;
+    background   : var(--accent-color);
+    color        : rgba(255,255,255,1);
+    padding      : 1rem;
+    margin       : 1rem;
+    border-radius: var(--radius);
+}
