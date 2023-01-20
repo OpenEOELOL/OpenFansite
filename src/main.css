@@ -348,13 +348,68 @@ html body {
     display        : flex;
     justify-content: center;
     align-items    : flex-end;
+    pointer-events : none;
+    z-index        : 7;
 }
 
 .tips {
-    position     : absolute;
-    background   : var(--accent-color);
-    color        : rgba(255,255,255,1);
-    padding      : 1rem;
-    margin       : 1rem;
+    position      : absolute;
+    background    : var(--accent-color);
+    color         : rgba(255,255,255,1);
+    padding       : 1rem;
+    margin        : 1rem;
+    border-radius : var(--radius);
+    pointer-events: none;
+}
+
+.pictureList {
+    max-width: 50rem;
+    margin   : 0 auto;
+}
+
+.pictureList__col-sizer,
+.pictureCard {
+    width: 22%;
+}
+
+.pictureList__gutter-sizer {
+    width: 3%;
+}
+
+.pictureCard {
+    border: 0.1rem solid var(--header-text-color);
+    background-color: var(--header-text-color);
     border-radius: var(--radius);
+    /* position: relative; */
+    display: block;
+    margin : 1%;
+}
+
+.pictureCard > img {
+    width         : 100%;
+    border-radius : var(--radius);
+    vertical-align: bottom;
+}
+
+.pictureCard > div {
+    color: white;
+    width: 100%;
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.pictureCard:link,
+.pictureCard:visited {
+    text-decoration: none;
+}
+
+.pictureCard > div > div {
+    padding-left: 0.2rem;
+}
+
+.pictureCard > div > div:nth-of-type(1) {
+    font-size: 1.2rem;
+}
+
+.pictureCard > div > div:nth-of-type(2) {
+    font-size: 0.8rem;
 }
