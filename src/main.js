@@ -65,7 +65,7 @@ let video__msnry = new Masonry(".videoList", {
 // 无限滚动插件初始化
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
-        return `http://127.0.0.1:5500/example/video1.json?${this.pageIndex}`;
+        return `https://openeoelol.github.io/OpenFansite/example/video2.json?${this.pageIndex}`;
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: video__msnry,
