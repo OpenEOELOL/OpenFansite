@@ -65,14 +65,14 @@ let video__msnry = new Masonry(".videoList", {
 // 无限滚动插件初始化
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
-        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=score&page=${this.pageIndex}&subscription-key=25aac10cef164deca8c98a2b4763bdb5`;
+        return `http://127.0.0.1:3000/example/video1.json`;
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: video__msnry,
     status: ".page-load-status", // 加载状态
     history: false, // 不展示历史
     // prefill: true, // 预先加载
-    scrollThreshold: false,                   // 不需要滚动到底部加载
+    scrollThreshold: false,                     // 不需要滚动到底部加载
     button         : "#videoList_viewmore",   // 展示更多按钮定义
 });
 
@@ -81,7 +81,7 @@ var video__proxyElem = document.createElement("div");
 
 video__infScroll.on("load", function (body) {
     // 数据转入 HTML 字符串
-    var video__itemsHTML = body["data"]["result"].map(getItemHTML).join("");
+    var video__itemsHTML = body["data"]["result"].map(getVideoItemHTML).join("");
     // 将 HTML 字符串转入到元素
     video__proxyElem.innerHTML = video__itemsHTML;
     // 添加元素物件
@@ -96,8 +96,8 @@ video__infScroll.on("load", function (body) {
 video__infScroll.loadNextPage();
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
-function getItemHTML({ title, name, pic }) {
-    return `<a class="pictureCard">
+function getVideoItemHTML({ title, name, pic }) {
+    return `<a class="videoCard">
     <img src = "${pic}" />
     <div>
         <div>${title}</div>
@@ -142,7 +142,7 @@ var picture__proxyElem = document.createElement("div");
 
 picture__infScroll.on("load", function (body) {
     // 数据转入 HTML 字符串
-    var picture__itemsHTML = body["data"].map(getItemHTML).join("");
+    var picture__itemsHTML = body["data"].map(getPictureItemHTML).join("");
     // 将 HTML 字符串转入到元素
     picture__proxyElem.innerHTML = picture__itemsHTML;
     // 添加元素物件
@@ -157,7 +157,7 @@ picture__infScroll.on("load", function (body) {
 picture__infScroll.loadNextPage();
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
-function getItemHTML({ username, name, firstPicture }) {
+function getPictureItemHTML({ username, name, firstPicture }) {
     return `<a class="pictureCard">
     <img src = "${firstPicture}" />
     <div>
@@ -167,4 +167,5 @@ function getItemHTML({ username, name, firstPicture }) {
 </a>`;
 }
 // 图片列表 部分脚本 结束 //
+
 
