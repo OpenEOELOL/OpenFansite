@@ -96,12 +96,12 @@ video__infScroll.on("load", function (body) {
 video__infScroll.loadNextPage();
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
-function getItemHTML({ name, pic }) {
+function getItemHTML({ title, name, pic }) {
     return `<a class="videoCard">
     <img src = "${pic}" />
     <div>
-        <div>${name}</div>
-        <div>${name}</div>
+        <div>${title}</div>
+        <div>[UP]${name}</div>
     </div>
 </a>`;
 }
