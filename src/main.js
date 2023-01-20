@@ -65,7 +65,7 @@ let video__msnry = new Masonry(".videoList", {
 // 无限滚动插件初始化
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
-        return `http://127.0.0.1:3000/example/video1.json`;
+        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=score&page=${this.pageIndex}&subscription-key=25aac10cef164deca8c98a2b4763bdb5`;
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: video__msnry,
@@ -167,5 +167,6 @@ function getPictureItemHTML({ username, name, firstPicture }) {
 </a>`;
 }
 // 图片列表 部分脚本 结束 //
+
 
 
