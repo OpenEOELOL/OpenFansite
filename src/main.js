@@ -65,7 +65,7 @@ let video__msnry = new Masonry(".videoList", {
 // 无限滚动插件初始化
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
-        return `http://127.0.0.1:5500/example/video1.json?${this.pageIndex}`;
+        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=score&page=${this.pageIndex}&subscription-key=25aac10cef164deca8c98a2b4763bdb5`;
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: video__msnry,
@@ -96,12 +96,12 @@ video__infScroll.on("load", function (body) {
 video__infScroll.loadNextPage();
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
-function getItemHTML({ name, pic }) {
+function getItemHTML({ title, name, pic }) {
     return `<a class="videoCard">
     <img src = "${pic}" />
     <div>
-        <div>${name}</div>
-        <div>${name}</div>
+        <div>${title}</div>
+        <div>[UP]${name}</div>
     </div>
 </a>`;
 }
