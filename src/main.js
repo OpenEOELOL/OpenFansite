@@ -72,8 +72,8 @@ let video__infScroll = new InfiniteScroll(".videoList", {
     status: ".page-load-status", // 加载状态
     history: false, // 不展示历史
     // prefill: true, // 预先加载
-    scrollThreshold: false, // 不需要滚动到底部加载
-    button: ".view-more-button", // 展示更多按钮定义
+    scrollThreshold: false,                   // 不需要滚动到底部加载
+    button         : "#videoList_viewmore",   // 展示更多按钮定义
 });
 
 // 转换 HTML 字符串到元素，用代理元素。
@@ -97,7 +97,7 @@ video__infScroll.loadNextPage();
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
 function getItemHTML({ title, name, pic }) {
-    return `<a class="videoCard">
+    return `<a class="pictureCard">
     <img src = "${pic}" />
     <div>
         <div>${title}</div>
@@ -106,3 +106,65 @@ function getItemHTML({ title, name, pic }) {
 </a>`;
 }
 // 视频列表 部分脚本 结束 //
+
+
+// 图片列表 部分脚本 开始 //
+// (这段其实压根就不是我写的 参考 Masonry 和 InfiniteScroll 官网展示的 codepen)
+
+// 瀑布流插件初始化
+let picture__msnry = new Masonry(".pictureList", {
+    itemSelector: ".pictureCard",
+    columnWidth: ".pictureList__col-sizer",
+    gutter: ".pictureList__gutter-sizer",
+    percentPosition: true,
+    stagger: 30,
+    // nicer reveal transition
+    visibleStyle: { transform: "translateY(0)", opacity: 1 },
+    hiddenStyle: { transform: "translateY(100px)", opacity: 0 },
+});
+
+// 无限滚动插件初始化
+let picture__infScroll = new InfiniteScroll(".pictureList", {
+    path: function () {
+        return `https://api.eoe.lol/apiDynamic/${this.pageIndex}`;
+    },
+    responseBody: "json", // 响应体为 JSON 格式
+    outlayer: picture__msnry,
+    status: ".page-load-status", // 加载状态
+    history: false, // 不展示历史
+    // prefill: true, // 预先加载
+    scrollThreshold: false,                     // 不需要滚动到底部加载
+    button         : "#pictureList_viewmore",   // 展示更多按钮定义
+});
+
+// 转换 HTML 字符串到元素，用代理元素。
+var picture__proxyElem = document.createElement("div");
+
+picture__infScroll.on("load", function (body) {
+    // 数据转入 HTML 字符串
+    var picture__itemsHTML = body["data"].map(getItemHTML).join("");
+    // 将 HTML 字符串转入到元素
+    picture__proxyElem.innerHTML = picture__itemsHTML;
+    // 添加元素物件
+    let picture__items = picture__proxyElem.querySelectorAll(".pictureCard");
+    imagesLoaded(picture__items, function () {
+        picture__infScroll.appendItems(picture__items);
+        picture__msnry.appended(picture__items);
+    });
+});
+
+// 加载一次先
+picture__infScroll.loadNextPage();
+
+// 此处定义一下一个视频卡片物件的 HTML 代码
+function getItemHTML({ username, name, firstPicture }) {
+    return `<a class="pictureCard">
+    <img src = "${firstPicture}" />
+    <div>
+        <div></div>
+        <div>[UP]${eval("'"+username+"'")}</div>
+    </div>
+</a>`;
+}
+// 图片列表 部分脚本 结束 //
+

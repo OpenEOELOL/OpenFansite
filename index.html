@@ -1,80 +1,106 @@
 <!DOCTYPE html>
 <html lang="zh">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="referrer" content="never" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-        />
-        <meta name="theme-color" content="#0ED242" />
-        <title>Powered by OpenEOELOL/OpenFansite</title>
-        <script src="config.js"></script>
-        <link href="./custom.css" rel="stylesheet" />
-        <link href="./src/main.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div id="header">
-            <div class="menu">
-                <div id="headerLeft">
-                    <span id="headerTitle">OpenFansite</span>
-                    <div id="tab">
-                        <a href="#homepage"><div>主页</div></a>
-                        <a href="#videopage"><div>视频</div></a>
-                        <a href="#picpage"><div>好图</div></a>
-                        <a href="#tools"><div>工具</div></a>
-                    </div>
-                </div>
-                <div id="headerRight"><button>设置与关于</button></div>
-            </div>
-        </div>
-        <div id="Pages">
-            <div id="homepage" class="page">
-                <div class="left">
-                    <div class="banner">
-                        <div>
-                            <button id="bannerButton">
-                                <span>立即查看</span>
-                                <img src="./src/left.svg" />
-                            </button>
-                        </div>
-                    </div>
-                    <img
-                        src="./src/依托蛞蝓.svg"
-                        style="height: 20%; margin: 2rem"
-                    />
-                </div>
-                <div class="right">视频图片混合列表</div>
-            </div>
-            <div id    = "videopage" class = "page">
-            <div class = "mask">
-                <div class = "tips">EOEFans 提供</div>
-            </div>
-            <div class = "option"></div>
-            <div class = "videoList">
-            <div class = "videoList__col-sizer"></div>
-            <div class = "videoList__gutter-sizer"></div>
-                </div>
 
-                <div class="page-load-status">
-                    <div class="loader-ellips infinite-scroll-request">
-                        <span class="loader-ellips__dot"></span>
-                        <span class="loader-ellips__dot"></span>
-                        <span class="loader-ellips__dot"></span>
-                        <span class="loader-ellips__dot"></span>
-                    </div>
-                    <p class="infinite-scroll-last">没有更多内容了</p>
-                    <p class="infinite-scroll-error">不能再加载了</p>
-                </div>
-                <button class="view-more-button">加载更多</button>
-            </div>
-            <div id="picpage" class="page">照片页</div>
-            <div id="tools" class="page">哎呀米诺</div>
-        </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="never" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#0ED242" />
+    <title>Powered by OpenEOELOL/OpenFansite</title>
+    <script src="config.js"></script>
+    <link href="./custom.css" rel="stylesheet" />
+    <link href="./src/main.css" rel="stylesheet" />
+</head>
 
-        <script src="./src/masonry.pkgd.min.js"></script>
-        <script src="src/infinite-scroll.pkgd.min.js"></script>
-        <script src="./src/main.js"></script>
-    </body>
+<body>
+    <div id="header">
+        <div class="menu">
+            <div id="headerLeft">
+                <span id="headerTitle">OpenFansite</span>
+                <div id="tab">
+                    <a href="#homepage">
+                        <div>主页</div>
+                    </a>
+                    <a href="#videopage">
+                        <div>视频</div>
+                    </a>
+                    <a href="#picpage">
+                        <div>好图</div>
+                    </a>
+                    <a href="#tools">
+                        <div>工具</div>
+                    </a>
+                </div>
+            </div>
+            <div id="headerRight"><button>设置与关于</button></div>
+        </div>
+    </div>
+    <div id="Pages">
+        <div id="homepage" class="page">
+            <div class="left">
+                <div class="banner">
+                    <div>
+                        <button id="bannerButton">
+                            <span>立即查看</span>
+                            <img src="./src/left.svg" />
+                        </button>
+                    </div>
+                </div>
+                <img src="./src/依托蛞蝓.svg" style="height: 20%; margin: 2rem" />
+            </div>
+            <div class="right">视频图片混合列表</div>
+        </div>
+        <div id="videopage" class="page">
+            <div class="mask">
+                <div class="tips">EOEFans 提供</div>
+            </div>
+            <div class="option"></div>
+            <div class="videoList">
+                <div class="videoList__col-sizer"></div>
+                <div class="videoList__gutter-sizer"></div>
+            </div>
+
+            <div class="page-load-status">
+                <div class="loader-ellips infinite-scroll-request">
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                </div>
+                <p class="infinite-scroll-last">没有更多内容了</p>
+                <p class="infinite-scroll-error">不能再加载了</p>
+            </div>
+            <button class="view-more-button" id="videoList_viewmore">加载更多</button>
+        </div>
+        <div id="picpage" class="page">
+            <div class="mask">
+                <div class="tips">EOELOL 提供</div>
+            </div>
+            <div class="option"></div>
+            <div class="pictureList">
+                <div class="pictureList__col-sizer"></div>
+                <div class="pictureList__gutter-sizer"></div>
+            </div>
+
+            <div class="page-load-status">
+                <div class="loader-ellips infinite-scroll-request">
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                </div>
+                <p class="infinite-scroll-last">没有更多内容了</p>
+                <p class="infinite-scroll-error">不能再加载了</p>
+            </div>
+            <button class = "view-more-button" id="pictureList_viewmore">加载更多</button>
+        </div>
+        <div id="tools" class="page">哎呀米诺</div>
+    </div>
+
+    <script src="./src/masonry.pkgd.min.js"></script>
+    <script src="src/infinite-scroll.pkgd.min.js"></script>
+    <script src="./src/main.js"></script>
+</body>
+
 </html>
-
