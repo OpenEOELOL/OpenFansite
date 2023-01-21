@@ -80,12 +80,12 @@ let video__msnry = new Masonry(".videoList", {
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
         //let video__pageNumber = this.pageIndex;
-        //return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=${getRadioValueByName("video__order")}&page=${video__pageNumber}&copyright=${getRadioValueByName("video__copyright")}&subscription-key=${EOEFansKey}`;
-        return `http://127.0.0.1:5500/example/video${getRadioValueByName(
-            "video__copyright"
-        )}.json?pn=${video__pageNumber}&type=${getRadioValueByName(
+        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=${getRadioValueByName("video__order")}&page=${video__pageNumber}&copyright=${getRadioValueByName("video__copyright")}&subscription-key=${EOEFansKey}`;
+        //return `http://127.0.0.1:5500/example/video${getRadioValueByName(
+        //    "video__copyright"
+        //)}.json?pn=${video__pageNumber}&type=${getRadioValueByName(
             "video__order"
-        )}`;
+        //)}`;
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: video__msnry,
