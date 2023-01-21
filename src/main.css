@@ -3,7 +3,7 @@ html body {
     padding: 0;
     height: 100vh;
     width: 100vw;
-    max-width: none!important;
+    max-width: none !important;
 }
 
 #header {
@@ -273,7 +273,8 @@ html body {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.videoList, .pictureList {
+.videoList,
+.pictureList {
     max-width: 50rem;
     margin: 0 auto;
 }
@@ -294,37 +295,65 @@ html body {
     }
 }
 
-.videoList__gutter-sizer, .pictureList__gutter-sizer {
+.videoList__gutter-sizer,
+.pictureList__gutter-sizer {
     width: 3%;
 }
 
-.videoCard, .pictureCard {
+.videoCard,
+.pictureCard {
     border: 0.1rem solid var(--header-text-color);
     background-color: var(--header-text-color);
     border-radius: var(--radius);
     /* position: relative; */
     display: block;
     margin: 1%;
+    transition: 0.3s cubic-bezier(var(--cubic-bezier));
+    opacity: 85%;
 }
 
-.videoCard > img, .pictureCard > img {
+.videoCard:hover,
+.pictureCard:hover {
+    transform: scale(102%);
+    opacity: 100%;
+}
+
+.videoCard:active,
+.pictureCard:active {
+    transform: scale(99%);
+}
+
+@media (prefers-color-scheme: dark) {
+    .videoCard,
+    .pictureCard {
+        opacity: 80%;
+    }
+    .videoCard:hover,
+    .pictureCard:hover {
+        opacity: 100%;
+    }
+}
+
+.videoCard > img,
+.pictureCard > img {
     width: 100%;
     border-radius: var(--radius);
     vertical-align: bottom;
     -webkit-user-drag: none;
 }
 
-.videoCard > div, .pictureCard > div {
+.videoCard > div,
+.pictureCard > div {
     color: white;
     width: 100%;
     border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .videoCard:link,
-.videoCard:visited, 
+.videoCard:visited,
 .pictureCard:link,
 .pictureCard:visited {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .videoCard > div > div,
@@ -359,7 +388,6 @@ html body {
     background-color: rgba(0, 0, 0, 0);
 }
 
-
 .tips {
     font-size: 0.5rem;
     color: var(--accent-color);
@@ -373,3 +401,52 @@ html body {
 .tips::before {
     content: "ⓘ ";
 }
+
+.option {
+    position: relative;
+}
+
+@-webkit-keyframes hide {
+    0% {
+        opacity: 100%;
+        pointer-events: initial;
+    }
+
+    100% {
+        opacity: 0%;
+        pointer-events: none;
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 100%;
+        pointer-events: initial;
+    }
+
+    100% {
+        opacity: 0%;
+        pointer-events: none;
+    }
+}
+
+.mask {
+    position: absolute;
+    background-color: var(--background-body);
+    width: 100%;
+    height: 100%;
+    transition: 1s cubic-bezier(var(--cubic-bezier));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-main);
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.hide {
+    transition: 1s cubic-bezier(var(--cubic-bezier));
+    -webkit-animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1 forwards;
+            animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1 forwards;
+}
+

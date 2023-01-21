@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#0ED242" />
     <title>Powered by OpenEOELOL/OpenFansite</title>
     <script src="config.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+    <link href="./src/water.min.css" rel="stylesheet" />
     <link href="./custom.css" rel="stylesheet" />
     <link href="./src/main.css" rel="stylesheet" />
 </head>
@@ -35,10 +35,10 @@
                     </a>
                 </div>
             </div>
-            <div id="headerRight"><button>设置与关于</button></div>
+            <div id="headerRight"><button id="settings">设置与关于</button></div>
         </div>
     </header>
-    <div id = "Pages">
+    <div id="Pages">
         <!-- 主页 -->
         <div id="homepage" class="page">
             <div class="left">
@@ -54,39 +54,63 @@
             </div>
             <div class="right">视频图片混合列表</div>
         </div>
-        
+
         <!-- 视频 -->
         <div id="videopage" class="page">
-                <div class="tips">EOEFans 提供</div>
-            <div class="option"></div>
-            <div class="videoList">
+            <div class="tips">EOEFans 提供</div>
+            <div class="option" id="videoOption"><div class="mask hide">加载中...</div>
+                <h2>筛选</h2>
+                <label>
+                    <input type="radio" name="video__copyright" value="1" checked />
+                    原创
+                </label>
+                <label>
+                    <input type="radio" name="video__copyright" value="2"/>
+                    切片
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="video__order" value="pubdate" />
+                    最新发布
+                </label>
+                <label>
+                    <input type="radio" name="video__order" value="view" />
+                    最多播放
+                </label>
+                <label>
+                    <input type="radio" name="video__order" value="score" checked />
+                    最推荐看
+                </label>
+
+            </div>
+            <div class="videoList" id="videoList">
                 <div class="videoList__col-sizer"></div>
                 <div class="videoList__gutter-sizer"></div>
             </div>
 
-            <div class="page-load-status">
+            <div class="page-load-status" id="videoStatus">
                 <div class="loader-ellips infinite-scroll-request">
                     <span class="loader-ellips__dot"></span>
                     <span class="loader-ellips__dot"></span>
                     <span class="loader-ellips__dot"></span>
                     <span class="loader-ellips__dot"></span>
                 </div>
-                <p class = "infinite-scroll-last">没有更多内容了</p>
-                <p class = "infinite-scroll-error">不能再加载了</p>
+                <p class="infinite-scroll-last">没有更多内容了</p>
+                <p class="infinite-scroll-error">不能再加载了</p>
             </div>
             <button class="view-more-button" id="videoList_viewmore">加载更多</button>
         </div>
-        
+
         <!-- 图片 -->
         <div id="picpage" class="page">
-                <div class="tips">EOELOL 提供</div>
+            <div class="tips">EOELOL 提供</div>
             <div class="option"></div>
             <div class="pictureList">
                 <div class="pictureList__col-sizer"></div>
                 <div class="pictureList__gutter-sizer"></div>
             </div>
 
-            <div class="page-load-status">
+            <div class="page-load-status" id="pictureStatus">
                 <div class="loader-ellips infinite-scroll-request">
                     <span class="loader-ellips__dot"></span>
                     <span class="loader-ellips__dot"></span>
@@ -98,13 +122,14 @@
             </div>
             <button class="view-more-button" id="pictureList_viewmore">加载更多</button>
         </div>
-        
+
         <!-- 工具 -->
         <div id="tools" class="page">哎呀米诺</div>
     </div>
 
     <script src="./src/masonry.pkgd.min.js"></script>
-    <script src="src/infinite-scroll.pkgd.min.js"></script>
+    <script src="./src/infinite-scroll.pkgd.min.js"></script>
+    <script src="./src/limit.js"></script>
     <script src="./src/main.js"></script>
 </body>
 

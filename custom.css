@@ -28,8 +28,8 @@
     --text-main: #363636;
     --text-bright: #000;
     --text-muted: #70777f;
-    --links: #0076d1;
-    --focus: rgba(0, 150, 191, 0.67);
+    --links: var(--accent-color);
+    --focus: var(--accent-color);
     --border: #dbdbdb;
     --code: #000;
     --animation-duration: 0.1s;

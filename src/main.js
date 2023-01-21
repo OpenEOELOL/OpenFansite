@@ -1,9 +1,21 @@
+// 通过 name 来获取 Radio 的值
+function getRadioValueByName(name) {
+    let radio = document.getElementsByName(name);
+    for (i = 0; i < radio.length; i++) {
+        // 遍历所有的选项然后返回有选上的选项
+        if (radio[i].checked) return radio[i].value;
+    }
+}
+
+
+
 // Menu 部分脚本 开始 //
 const tab = document.getElementById("tab");
 
 // 切换 tab 栏状态函数
 function tabActived(x) {
-    for (var i = 0; i < tab.childElementCount; i++) {
+    for (let i = 0; i < tab.childElementCount; i++) {
+        // 遍历所有 tab 然后取消各自的 actived 状态
         tab.children[i].classList.remove("actived");
     }
     tab.children[x].classList.add("actived");
@@ -21,7 +33,7 @@ function tabActived(x) {
 const tabChildren = tab.querySelectorAll("a");
 for (let i = 0; i < tabChildren.length; i++) {
     tabChildren[i].addEventListener("click", (event) => {
-        console.log(event);
+        //console.log(event);
         // 获取点击的子元素
         const tabClickedChild = event.target.parentNode;
         // 获取点击的子元素的索引
@@ -49,6 +61,7 @@ if (hashPage.includes(location.hash)) {
 
 // 视频列表 部分脚本 开始 //
 // (这段其实压根就不是我写的 参考 Masonry 和 InfiniteScroll 官网展示的 codepen)
+let video__pageNumber = 1;
 
 // 瀑布流插件初始化
 let video__msnry = new Masonry(".videoList", {
@@ -57,6 +70,7 @@ let video__msnry = new Masonry(".videoList", {
     gutter: ".videoList__gutter-sizer",
     percentPosition: true,
     stagger: 30,
+    transitionDuration: 0,
     // nicer reveal transition
     visibleStyle: { transform: "translateY(0)", opacity: 1 },
     hiddenStyle: { transform: "translateY(100px)", opacity: 0 },
@@ -65,16 +79,56 @@ let video__msnry = new Masonry(".videoList", {
 // 无限滚动插件初始化
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
-        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=score&page=${this.pageIndex}&subscription-key=25aac10cef164deca8c98a2b4763bdb5`;
-        //return `http://127.0.0.1:3000/example/video1.json`
+        //let video__pageNumber = this.pageIndex;
+        //return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=${getRadioValueByName("video__order")}&page=${video__pageNumber}&copyright=${getRadioValueByName("video__copyright")}&subscription-key=${EOEFansKey}`;
+        return `http://127.0.0.1:5500/example/video${getRadioValueByName(
+            "video__copyright"
+        )}.json?pn=${video__pageNumber}&type=${getRadioValueByName(
+            "video__order"
+        )}`;
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: video__msnry,
-    status: ".page-load-status", // 加载状态
+    status: "#videoStatus", // 加载状态
     history: false, // 不展示历史
     // prefill: true, // 预先加载
-    scrollThreshold: false,                     // 不需要滚动到底部加载
-    button         : "#videoList_viewmore",   // 展示更多按钮定义
+    scrollThreshold: false, // 不需要滚动到底部加载
+    button: "#videoList_viewmore", // 展示更多按钮定义
+});
+
+//加载时的事件
+video__infScroll.on("request", function () {
+    //console.log(video__pageNumber);
+    video__pageNumber++; //每加载一页就准备好下一页的页数，使用自增语法。
+    for (let i = 0; i < document.querySelectorAll(".mask").length; i++) {
+        document.querySelectorAll(".mask")[i].classList.remove("hide"); //遍历所有的遮罩并移除“隐藏”样式
+    }
+    for (
+        let i = 0;
+        i < document.querySelectorAll("#videoList_viewmore").length;
+        i++
+    ) {
+        document
+            .querySelectorAll("#videoList_viewmore")
+            [i].classList.add("hide"); //遍历所有的“查看更多”的按钮并添加隐藏样式
+    }
+});
+
+//当瀑布流页面排序完毕时，执行...
+video__msnry.on("layoutComplete", function () {
+    for (let i = 0; i < document.querySelectorAll(".mask").length; i++) {
+        document.querySelectorAll(".mask")[i].classList.add("hide"); //遍历所有的遮罩并添加隐藏样式
+    }
+
+    for (
+        let i = 0;
+        i < document.querySelectorAll("#videoList_viewmore").length;
+        i++
+    ) {
+        document
+            .querySelectorAll("#videoList_viewmore")
+            [i].classList.remove("hide"); //遍历所有的遮罩并移除隐藏样式
+    }
 });
 
 // 转换 HTML 字符串到元素，用代理元素。
@@ -82,24 +136,45 @@ var video__proxyElem = document.createElement("div");
 
 video__infScroll.on("load", function (body) {
     // 数据转入 HTML 字符串
-    var video__itemsHTML = body["data"]["result"].map(getVideoItemHTML).join("");
+    var video__itemsHTML = body["data"]["result"]
+        .map(getVideoItemHTML)
+        .join("");
     // 将 HTML 字符串转入到元素
     video__proxyElem.innerHTML = video__itemsHTML;
     // 添加元素物件
     let video__items = video__proxyElem.querySelectorAll(".videoCard");
     imagesLoaded(video__items, function () {
-        video__infScroll.appendItems(video__items);
-        video__msnry.appended(video__items);
+        video__infScroll.appendItems(video__items); //添加元素给无限滚动处理
+        video__msnry.appended(video__items); //添加元素给瀑布流插件处理
     });
+
+    for (let i = 0; i < document.querySelectorAll(".mask").length; i++) {
+        document.querySelectorAll(".mask")[i].classList.add("hide"); //加载后隐藏所有的遮罩
+    }
+    setTimeout(() => {
+        debounce(AgainLayout, 500, false); //加载七百毫秒后重新排列
+    }, 700);
 });
 
 // 加载一次先
 video__infScroll.loadNextPage();
 
+// 点击筛选选项后重新加载
+document.querySelector("#videoOption").addEventListener("click", () => {
+    video__pageNumber = 1; //重设要开始加载的页数
+    document.querySelector(
+        ".videoList"
+    ).innerHTML = `                <div class="videoList__col-sizer"></div>
+                <div class="videoList__gutter-sizer"></div>`; //重设视频列表
+    setTimeout(() => {
+        video__infScroll.loadNextPage();
+    }, 1); //加载下一页（还有我不知道怎么怎么解决这个问题，不知道怎么说，你如果能看到这里把 setTimeout 移除看看。
+});
+
 // 此处定义一下一个视频卡片物件的 HTML 代码
-function getVideoItemHTML({ title, name, pic }) {
-    return `<a class="videoCard">
-    <img src = "${pic}" />
+function getVideoItemHTML({ title, name, pic, aid }) {
+    return `<a class="videoCard" href="https://bilibili.com/video/av${aid}">
+    <img src = "${pic}" loading="lazy" onload="AgainLayout()" />
     <div>
         <div>${title}</div>
         <div>[UP]${name}</div>
@@ -107,7 +182,6 @@ function getVideoItemHTML({ title, name, pic }) {
 </a>`;
 }
 // 视频列表 部分脚本 结束 //
-
 
 // 图片列表 部分脚本 开始 //
 // (这段其实压根就不是我写的 参考 Masonry 和 InfiniteScroll 官网展示的 codepen)
@@ -118,6 +192,7 @@ let picture__msnry = new Masonry(".pictureList", {
     columnWidth: ".pictureList__col-sizer",
     gutter: ".pictureList__gutter-sizer",
     percentPosition: true,
+    transitionDuration: 0,
     stagger: 30,
     // nicer reveal transition
     visibleStyle: { transform: "translateY(0)", opacity: 1 },
@@ -131,11 +206,11 @@ let picture__infScroll = new InfiniteScroll(".pictureList", {
     },
     responseBody: "json", // 响应体为 JSON 格式
     outlayer: picture__msnry,
-    status: ".page-load-status", // 加载状态
+    status: "#pictureStatus", // 加载状态
     history: false, // 不展示历史
     // prefill: true, // 预先加载
-    scrollThreshold: false,                     // 不需要滚动到底部加载
-    button         : "#pictureList_viewmore",   // 展示更多按钮定义
+    scrollThreshold: false, // 不需要滚动到底部加载
+    button: "#pictureList_viewmore", // 展示更多按钮定义
 });
 
 // 转换 HTML 字符串到元素，用代理元素。
@@ -152,29 +227,66 @@ picture__infScroll.on("load", function (body) {
         picture__infScroll.appendItems(picture__items);
         picture__msnry.appended(picture__items);
     });
+
+    setTimeout(() => {
+        debounce(AgainLayout, 500, false); //加载七百毫秒后重新排列
+    }, 700);
 });
 
 // 加载一次先
 picture__infScroll.loadNextPage();
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
-function getPictureItemHTML({ username, name, firstPicture }) {
-    return `<a class="pictureCard">
-    <img src = "${firstPicture}" />
+// 不好意思 这边加载完一个就layout一次可能对低性能设备不太友好 不知道怎么解决 后面应该会加上防抖
+function getPictureItemHTML({ username, firstPicture, dynamicIDStr }) {
+    return `<a class="pictureCard" href="https://t.bilibili.com/${dynamicIDStr}">
+    <img src = "${firstPicture}" loading="lazy" onload="AgainLayout()" />
     <div>
         <div></div>
-        <div>[UP]${eval("'"+username+"'")}</div>
+        <div>[UP]${eval("'" + username + "'")}</div>
     </div>
 </a>`;
 }
-// 图片列表 部分脚本 结束 //
 
-// 窗口大小变化时重新整理卡片位置
-window.addEventListener("resize", () => {
-    video__msnry.layout();
-    picture__msnry.layout();
+picture__infScroll.on("request", function () {
+    for (
+        let i = 0;
+        i < document.querySelectorAll("#pictureList_viewmore").length;
+        i++
+    ) {
+        document
+            .querySelectorAll("#pictureList_viewmore")
+            [i].classList.add("hide"); //遍历所有的“查看更多”的按钮并添加隐藏样式
+    }
 });
 
+picture__msnry.on("layoutComplete", function () {
+    for (let i = 0; i < document.querySelectorAll(".mask").length; i++) {
+        document.querySelectorAll(".mask")[i].classList.add("hide");
+    }
+
+    for (
+        let i = 0;
+        i < document.querySelectorAll("#pictureList_viewmore").length;
+        i++
+    ) {
+        document
+            .querySelectorAll("#pictureList_viewmore")
+            [i].classList.remove("hide");
+    }
+});
+// 图片列表 部分脚本 结束 //
+
+function AgainLayout() {
+        video__msnry.layout();
+        picture__msnry.layout();
+}
+// 窗口大小变化时重新整理卡片位置
 
 
 
+
+
+
+
+window.addEventListener("resize", debounce(AgainLayout, 500, false));
