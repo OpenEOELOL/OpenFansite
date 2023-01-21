@@ -1,8 +1,72 @@
+/* 界面配色调整 */
 :root {
     --main-color: #eeffee;
-    --header-text-color : #63E886;
+    --header-text-color: #63e886;
     --accent-color: #1e9f40;
     --homepage-background-color: #f8fef9;
     --radius: 8px;
-    --cubic-bezier: 0, 0.88, 0, 0.97; 
+    --cubic-bezier: 0, 0.88, 0, 0.97;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-color: #171d17;
+        --header-text-color: #2bc755;
+        --accent-color: #00ff5e;
+        --homepage-background-color: rgba(0,0,0,0);
+        --radius: 9px;
+        --cubic-bezier: 0, 0.88, 0, 0.97;
+    }
+}
+
+/* water.css 的配色调整 */
+:root {
+    --background-body: #fff;
+    --background: #efefef;
+    --background-alt: #f7f7f7;
+    --selection: #9e9e9e;
+    --text-main: #363636;
+    --text-bright: #000;
+    --text-muted: #70777f;
+    --links: #0076d1;
+    --focus: rgba(0, 150, 191, 0.67);
+    --border: #dbdbdb;
+    --code: #000;
+    --animation-duration: 0.1s;
+    --button-base: #d0cfcf;
+    --button-hover: #9b9b9b;
+    --scrollbar-thumb: #aaa;
+    --scrollbar-thumb-hover: var(--button-hover);
+    --form-placeholder: #949494;
+    --form-text: #1d1d1d;
+    --variable: #39a33c;
+    --highlight: #ff0;
+    --select-arrow: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='63' width='117' fill='%23161f27'%3E%3Cpath d='M115 2c-1-2-4-2-5 0L59 53 7 2a4 4 0 00-5 5l54 54 2 2 3-2 54-54c2-1 2-4 0-5z'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-body: #0f0f0f;
+        --background: #000000;
+        --background-alt: #131313;
+        --selection: #1c76c5;
+        --text-main: #dbdbdb;
+        --text-bright: #fff;
+        --text-muted: #a9b1ba;
+        --links: #41adff;
+        --focus: rgba(0, 150, 191, 0.67);
+        --border: #526980;
+        --code: #ffbe85;
+        --animation-duration: 0.1s;
+        --button-base: #0c151c;
+        --button-hover: #040a0f;
+        --scrollbar-thumb: var(--button-hover);
+        --scrollbar-thumb-hover: #000;
+        --form-placeholder: #a9a9a9;
+        --form-text: #fff;
+        --variable: #d941e2;
+        --highlight: #efdb43;
+        --select-arrow: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='63' width='117' fill='%23efefef'%3E%3Cpath d='M115 2c-1-2-4-2-5 0L59 53 7 2a4 4 0 00-5 5l54 54 2 2 3-2 54-54c2-1 2-4 0-5z'/%3E%3C/svg%3E");
+    }
+}
+

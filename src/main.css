@@ -3,6 +3,7 @@ html body {
     padding: 0;
     height: 100vh;
     width: 100vw;
+    max-width: none!important;
 }
 
 #header {
@@ -141,8 +142,10 @@ html body {
     overflow: auto;
 }
 
-.page:nth-of-type(2)::-webkit-scrollbar {
-    width: 0px;
+.page:nth-of-type(2)::-webkit-scrollbar,
+.page:nth-of-type(3)::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
 }
 
 :target {
@@ -270,28 +273,32 @@ html body {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.videoList {
+.videoList, .pictureList {
     max-width: 50rem;
     margin: 0 auto;
 }
 
 .videoList__col-sizer,
-.videoCard {
+.videoCard,
+.pictureList__col-sizer,
+.pictureCard {
     width: 22%;
 }
 
 @media screen and (max-width: 790px) {
     .videoList__col-sizer,
-    .videoCard {
+    .videoCard,
+    .pictureList__col-sizer,
+    .pictureCard {
         width: 46.8%;
     }
 }
 
-.videoList__gutter-sizer {
+.videoList__gutter-sizer, .pictureList__gutter-sizer {
     width: 3%;
 }
 
-.videoCard {
+.videoCard, .pictureCard {
     border: 0.1rem solid var(--header-text-color);
     background-color: var(--header-text-color);
     border-radius: var(--radius);
@@ -300,32 +307,38 @@ html body {
     margin: 1%;
 }
 
-.videoCard > img {
+.videoCard > img, .pictureCard > img {
     width: 100%;
     border-radius: var(--radius);
     vertical-align: bottom;
+    -webkit-user-drag: none;
 }
 
-.videoCard > div {
+.videoCard > div, .pictureCard > div {
     color: white;
     width: 100%;
     border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .videoCard:link,
-.videoCard:visited {
+.videoCard:visited, 
+.pictureCard:link,
+.pictureCard:visited {
     text-decoration: none;
 }
 
-.videoCard > div > div {
+.videoCard > div > div,
+.pictureCard > div > div {
     padding-left: 0.2rem;
 }
 
-.videoCard > div > div:nth-of-type(1) {
+.videoCard > div > div:nth-of-type(1),
+.pictureCard > div > div:nth-of-type(1) {
     font-size: 1.2rem;
 }
 
-.videoCard > div > div:nth-of-type(2) {
+.videoCard > div > div:nth-of-type(2),
+.pictureCard > div > div:nth-of-type(2) {
     font-size: 0.8rem;
 }
 
@@ -346,84 +359,17 @@ html body {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.mask {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    pointer-events: none;
-    z-index: 7;
-}
 
 .tips {
-    position: absolute;
-    background: var(--accent-color);
-    color: rgba(255, 255, 255, 1);
-    padding: 1rem;
-    margin: 1rem;
+    font-size: 0.5rem;
+    color: var(--accent-color);
+    padding: 0.1rem;
+    margin: 0.1rem;
     border-radius: var(--radius);
     pointer-events: none;
+    text-align: center;
 }
 
-.pictureList {
-    max-width: 50rem;
-    margin: 0 auto;
-}
-
-.pictureList__col-sizer,
-.pictureCard {
-    width: 22%;
-}
-
-@media screen and (max-width: 790px) {
-    .pictureList__col-sizer,
-    .pictureCard {
-        width: 46.8%;
-    }
-}
-
-.pictureList__gutter-sizer {
-    width: 3%;
-}
-
-.pictureCard {
-    border: 0.1rem solid var(--header-text-color);
-    background-color: var(--header-text-color);
-    border-radius: var(--radius);
-    /* position: relative; */
-    display: block;
-    margin: 1%;
-}
-
-.pictureCard > img {
-    width: 100%;
-    border-radius: var(--radius);
-    vertical-align: bottom;
-}
-
-.pictureCard > div {
-    color: white;
-    width: 100%;
-    border-radius: 0 0 var(--radius) var(--radius);
-}
-
-.pictureCard:link,
-.pictureCard:visited {
-    text-decoration: none;
-}
-
-.pictureCard > div > div {
-    padding-left: 0.2rem;
-}
-
-.pictureCard > div > div:nth-of-type(1) {
-    font-size: 1.2rem;
-}
-
-.pictureCard > div > div:nth-of-type(2) {
-    font-size: 0.8rem;
+.tips::before {
+    content: "ⓘ ";
 }
