@@ -1,9 +1,23 @@
+:root {
+    --headerHeight: 2.63rem;
+}
+
+@media screen and (max-width: 35rem) {
+    :root {
+        --headerHeight: 4rem;
+    }
+}
+
 html body {
     margin: 0;
     padding: 0;
     height: 100vh;
     width: 100vw;
     max-width: none !important;
+}
+
+* {
+    transition: 0.5s cubic-bezier(var(--cubic-bezier));
 }
 
 ::-webkit-scrollbar {
@@ -26,10 +40,11 @@ dialog {
     width: 100%;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 29rem) {
     dialog {
         width: 100%;
         max-width: 27rem;
+        border-radius: var(--radius);
     }
 }
 
@@ -39,7 +54,7 @@ dialog::-webkit-scrollbar {
 
 #header {
     background-color: var(--main-color);
-    height: 2.63rem;
+    height: var(--headerHeight);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -52,6 +67,12 @@ dialog::-webkit-scrollbar {
     color: var(--header-text-color);
     font-size: 1.48rem;
     margin-right: 0.3rem;
+}
+
+@media screen and (max-width: 35rem) {
+    #headerTitle {
+        display: none;
+    }
 }
 
 #headerLeft {
@@ -88,6 +109,18 @@ dialog::-webkit-scrollbar {
     height: 100%;
 }
 
+@media screen and (max-width: 35rem) {
+    #tab {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 22rem) {
+    #tab {
+        font-size: 1.1rem;
+    }
+}
+
 #tab a:link,
 #tab a:visited {
     color: var(--header-text-color);
@@ -106,6 +139,21 @@ dialog::-webkit-scrollbar {
 #settings:active {
     transform: scale(90%);
     background-color: var(--header-text-color);
+}
+
+@media screen and (max-width: 35rem) {
+    #headerRight {
+        margin-right: 1rem;
+    }
+    #settings > span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 22rem) {
+    #settings {
+        padding: 0.6rem;
+    }
 }
 
 .active {
@@ -140,7 +188,7 @@ dialog::-webkit-scrollbar {
 
 #Pages {
     width: 100%;
-    height: calc(100% - 2.63rem);
+    height: calc(100% - var(--headerHeight));
     position: relative;
     overflow: auto;
     max-width: 70.7rem;
@@ -199,11 +247,13 @@ dialog::-webkit-scrollbar {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    overflow-x: hidden;
 }
 
-#homepage > div {
-    width: 50%;
-    padding-top: 1.1rem;
+@media screen and (max-width: 35rem) {
+    #homepage {
+        display: block;
+    }
 }
 
 #homepage > div:nth-of-type(1) {
@@ -217,36 +267,16 @@ dialog::-webkit-scrollbar {
         rgba(0, 0, 0, 0) 79.89%,
         var(--homepage-background-color) 80.15%
     );
+    width: 50%;
+    padding-top: 1.1rem;
 }
 
-@-webkit-keyframes rotate {
-    0% {
-        transform: rotate(0turn);
+@media screen and (max-width: 35rem) {
+    #homepage > div:nth-of-type(1) {
+        width: 100%;
+        height: 100%;
+        padding: 0;
     }
-    100% {
-        transform: rotate(1turn);
-    }
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0.7turn) scale(-0.8, 0.8);
-        background-color: #000000;
-        box-shadow: 2px 70px 10px #ff0000;
-    }
-    100% {
-        transform: rotate(2turn) scale(0.8, -0.8);
-        background-color: #f2b1d5;
-        box-shadow: 2px 2px 12px #00ffff;
-    }
-}
-
-#homepage > div:nth-of-type(1) > img {
-    border-radius: 100%;
-    width: 70px;
-    height: 10px;
-    -webkit-animation: linear 1s infinite alternate rotate;
-    animation: linear 1s infinite alternate rotate;
 }
 
 #homepage > div:nth-of-type(2) {
@@ -254,6 +284,35 @@ dialog::-webkit-scrollbar {
     justify-content: left;
     padding-left: 1rem;
     background-color: var(--homepage-background-color);
+    width: 50%;
+}
+
+#homepage > div:nth-of-type(2) > iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media screen and (max-width: 35rem) {
+    #homepage > div:nth-of-type(2) {
+        display: none;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.websiteNameForMobile {
+    display: none;
+    width: 100%;
+    background-color: var(--main-color);
+    text-align: center;
+    color: var(--header-text-color);
+}
+
+@media screen and (max-width: 35rem) {
+    .websiteNameForMobile {
+        display: block;
+    }
 }
 
 .banner {
@@ -264,6 +323,13 @@ dialog::-webkit-scrollbar {
     background-position: center;
     border-radius: var(--radius);
     position: relative;
+}
+
+@media screen and (max-width: 35rem) {
+    .banner {
+        height: 35%;
+        border-radius: 0;
+    }
 }
 
 .banner > div {
@@ -282,6 +348,12 @@ dialog::-webkit-scrollbar {
     align-items: flex-end;
 }
 
+@media screen and (max-width: 35rem) {
+    .banner > div {
+        border-radius: 0;
+    }
+}
+
 .bannerButton {
     margin: 0 1.5rem 1rem 0;
     background: rgba(25, 25, 25, 0.48);
@@ -294,13 +366,6 @@ dialog::-webkit-scrollbar {
     transition: 3s cubic-bezier(var(--cubic-bezier));
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-}
-
-.bannerButton > img {
-    transform: rotate(180deg);
-    height: 1em;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .bannerButton > span {
@@ -325,7 +390,7 @@ dialog::-webkit-scrollbar {
     width: 22%;
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 43rem) {
     .videoList__col-sizer,
     .videoCard,
     .pictureList__col-sizer,
@@ -481,10 +546,56 @@ dialog::-webkit-scrollbar {
     z-index: 10;
 }
 
+.mask_DONT_Hide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 1s cubic-bezier(var(--cubic-bezier));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    z-index: 10;
+}
+
 .hide {
     transition: 1s cubic-bezier(var(--cubic-bezier));
     -webkit-animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1
         forwards;
     animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1 forwards;
+}
+
+@-webkit-keyframes flash {
+    0% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0%;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+}
+
+.flash {
+    -webkit-animation: cubic-bezier(var(--cubic-bezier)) 3s infinite alternate
+        flash;
+    animation: cubic-bezier(var(--cubic-bezier)) 3s infinite alternate flash;
 }
 

@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="never" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#0ED242" />
+    <title>Powered by OpenEOELOL/OpenFansite</title>
+    <link rel="stylesheet" href="./custom.css" />
+    <link rel="stylesheet" href="./src/main.css" />
+</head>
+
+<body>
+    <div class="pictureList">
+        <div class="pictureList__col-sizer"></div>
+        <div class="pictureList__gutter-sizer"></div>
+    </div>
+
+    <div class="page-load-status" id="pictureStatus">
+        <p class="infinite-scroll-request">正在准备内容</p>
+        <p class="infinite-scroll-last">没有更多内容了</p>
+        <p class="infinite-scroll-error">不能再加载了</p>
+    </div>
+    <script src="./src/masonry.pkgd.min.js"></script>
+    <script src="./src/infinite-scroll.pkgd.min.js"></script>
+    <script src="./src/limit.js"></script>
+    <script>// 瀑布流插件初始化
+        let picture__msnry = new Masonry(".pictureList", {
+            itemSelector: ".pictureCard",
+            columnWidth: ".pictureList__col-sizer",
+            gutter: ".pictureList__gutter-sizer",
+            percentPosition: true,
+            transitionDuration: 0,
+            stagger: 30,
+        });
+
+        // 无限滚动插件初始化
+        let picture__infScroll = new InfiniteScroll(".pictureList", {
+            path: function () {
+                return `https://api.eoe.lol/apiDynamic/${this.pageIndex}`;
+            },
+            responseBody: "json", // 响应体为 JSON 格式
+            outlayer: picture__msnry,
+            status: "#pictureStatus", // 加载状态
+            history: false, // 不展示历史
+            // prefill: true, // 预先加载
+            scrollThreshold: false, // 不需要滚动到底部加载
+        });
+        function AgainLayout() {
+            picture__msnry.layout();
+        }
+
+        // 转换 HTML 字符串到元素，用代理元素。
+        var picture__proxyElem = document.createElement("div");
+
+        picture__infScroll.on("load", function (body) {
+            // 数据转入 HTML 字符串
+            var picture__itemsHTML = body["data"].map(getPictureItemHTML).join("");
+            // 将 HTML 字符串转入到元素
+            picture__proxyElem.innerHTML = picture__itemsHTML;
+            // 添加元素物件
+            let picture__items = picture__proxyElem.querySelectorAll(".pictureCard");
+
+            imagesLoaded(picture__items, function () {
+                picture__infScroll.appendItems(picture__items);
+                picture__msnry.appended(picture__items);
+            });
+
+            setTimeout(() => {
+                debounce(AgainLayout, 500, false); //加载七百毫秒后重新排列
+            }, 700);
+        });
+
+        // 加载一次先
+        picture__infScroll.loadNextPage();
+
+        // 此处定义一下一个视频卡片物件的 HTML 代码
+        // 不好意思 这边加载完一个就layout一次可能对低性能设备不太友好 不知道怎么解决 后面应该会加上防抖
+        function getPictureItemHTML({ username, firstPicture }) {
+            return `<a class="pictureCard" >
+    <img src = "${firstPicture}" loading="lazy" onload="AgainLayout()" />
+    <div>
+        <div></div>
+        <div>[UP]${eval("'" + username + "'")}</div>
+    </div>
+</a>`;
+        }
+// 图片列表 部分脚本 结束 //</script>
+</body>
+
+</html>

@@ -7,6 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="theme-color" content="#0ED242" />
+    <link rel="shortcut icon" href="./favicon.png">
     <title>Powered by OpenEOELOL/OpenFansite</title>
     <script src="config.js"></script>
     <link rel="stylesheet" href="./src/water.min.css" />
@@ -86,19 +87,26 @@
     <div id="Pages">
         <!-- 主页 -->
         <div id="homepage" class="page">
-            
+
             <div class="left">
+                <div class="websiteNameForMobile">OpenFansite</div>
                 <div class="banner">
                     <div>
-                        <button class="bannerButton" type="link">
+                        <button class="bannerButton" type="link" style="display:none; ">
                             <span>立即查看</span>
                             <i class="icon">keyboard_arrow_right</i>
                         </button>
                     </div>
                 </div>
+                <i class="tips flash">切换选项卡查看更多内容</i>
                 <img src="./src/依托蛞蝓.svg" style="height: 20%; margin: 2rem" />
             </div>
-            <div class="right"><div class="tips">切换选项卡查看更多内容</div>
+            <div class="right">
+                <iframe src="right.html" seamless sandbox="allow-same-origin allow-scripts"></iframe>
+                <div class="mask_DONT_Hide"
+                    style="width: 50%; align-items: flex-end; background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,var(--homepage-background-color));">
+                    <div class="tips" style="font-size: 1.2rem;padding-bottom: 5rem;">更多图片请切换到“图片”选项卡</div>
+                </div>
             </div>
         </div>
 
@@ -172,6 +180,7 @@
 
     <script src="./src/masonry.pkgd.min.js"></script>
     <script src="./src/infinite-scroll.pkgd.min.js"></script>
+    <script src="./src/webfont.js"></script>
     <script src="./src/limit.js"></script>
     <script src="./src/main.js"></script>
 </body>

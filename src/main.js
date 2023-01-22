@@ -355,7 +355,8 @@ document
                 getRadioValueByName("open_bilibili")
             );
         }
-    OpenWay = localStorage.getItem("open_bilibili");});
+        OpenWay = localStorage.getItem("open_bilibili");
+    });
 
 if (OpenWay == null) {
     localStorage.setItem("open_bilibili", "website");
@@ -364,13 +365,27 @@ if (OpenWay == null) {
     setOpenWayRadio(OpenWay);
 }
 
+// 设置 部分脚本 结束 //
 
+document.querySelector("#homepage .right").addEventListener("click", () => {
+    window.location.hash = "#picpage";
+    tabActived(hashPage.indexOf(location.hash));
+});
 
+// 配置应用 部分脚本 开始 //
+document.querySelector("#headerTitle").innerHTML = siteName;
+document.querySelector(".websiteNameForMobile").innerHTML = siteName;
+document.title = siteName;
 
+WebFont.load({
+    custom: {
+        families: ["LXGWFasmartGothic"],
+    },
+    classes: false,
+    active() {
+        document.body.style.fontFamily = "LXGWFasmartGothic";
+    },
+});
 
-
-
-
-
-
+// 配置应用 部分脚本 结束 //
 
