@@ -16,6 +16,13 @@ html body {
     max-width: none !important;
 }
 
+@media screen and (max-width: 35rem) {
+html body {
+height: calc(92.5vh - 0.1px);
+}
+}
+
+
 * {
     transition: 0.5s cubic-bezier(var(--cubic-bezier));
 }
