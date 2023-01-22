@@ -1,3 +1,33 @@
+let OpenWay = localStorage.getItem("open_bilibili");
+
+// 视频打开逻辑
+function video(videoID) {
+    let link;
+    if (OpenWay == "app") {
+        link = "bilibili://video/" + videoID;
+        window.location.href = link;
+    } else if (OpenWay == "uwp") {
+        link = "richasy-bili://play?video=" + videoID;
+    } else if (OpenWay == "website") {
+        link = "https://www.bilibili.com/video/av" + videoID;
+        window.open(link, "_newtab");
+    }
+}
+
+function dynamic(dynamicID) {
+    let link;
+    if (OpenWay == "app") {
+        link = "bilibili://following/detail/" + dynamicID;
+        window.location.href = link;
+    } else if (OpenWay == "uwp") {
+        link = "https://t.bilibili.com/" + dynamicID;
+        window.open(link, "_newtab");
+    } else if (OpenWay == "website") {
+        link = "https://t.bilibili.com/" + dynamicID;
+        window.open(link, "_newtab");
+    }
+}
+
 // 通过 name 来获取 Radio 的值
 function getRadioValueByName(name) {
     let radio = document.getElementsByName(name);
@@ -6,8 +36,6 @@ function getRadioValueByName(name) {
         if (radio[i].checked) return radio[i].value;
     }
 }
-
-
 
 // Menu 部分脚本 开始 //
 const tab = document.getElementById("tab");
@@ -80,11 +108,15 @@ let video__msnry = new Masonry(".videoList", {
 let video__infScroll = new InfiniteScroll(".videoList", {
     path: function () {
         //let video__pageNumber = this.pageIndex;
-        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=${getRadioValueByName("video__order")}&page=${video__pageNumber}&copyright=${getRadioValueByName("video__copyright")}&subscription-key=${EOEFansKey}`;
+        return `https://api.eoe.best/eoefans-api/v1/video-interface/advanced-search?order=${getRadioValueByName(
+            "video__order"
+        )}&page=${video__pageNumber}&copyright=${getRadioValueByName(
+            "video__copyright"
+        )}&subscription-key=${EOEFansKey}`;
         //return `http://127.0.0.1:5500/example/video${getRadioValueByName(
         //    "video__copyright"
         //)}.json?pn=${video__pageNumber}&type=${getRadioValueByName(
-            "video__order"
+        ("video__order");
         //)}`;
     },
     responseBody: "json", // 响应体为 JSON 格式
@@ -143,11 +175,12 @@ video__infScroll.on("load", function (body) {
     video__proxyElem.innerHTML = video__itemsHTML;
     // 添加元素物件
     let video__items = video__proxyElem.querySelectorAll(".videoCard");
-    imagesLoaded(video__items, function () {
-        video__infScroll.appendItems(video__items); //添加元素给无限滚动处理
-        video__msnry.appended(video__items); //添加元素给瀑布流插件处理
-    });
-
+    // imagesLoaded(video__items, function () {
+    //     video__infScroll.appendItems(video__items); //添加元素给无限滚动处理
+    //     video__msnry.appended(video__items); //添加元素给瀑布流插件处理
+    // });
+    video__infScroll.appendItems(video__items); //添加元素给无限滚动处理
+    video__msnry.appended(video__items); //添加元素给瀑布流插件处理
     for (let i = 0; i < document.querySelectorAll(".mask").length; i++) {
         document.querySelectorAll(".mask")[i].classList.add("hide"); //加载后隐藏所有的遮罩
     }
@@ -160,20 +193,28 @@ video__infScroll.on("load", function (body) {
 video__infScroll.loadNextPage();
 
 // 点击筛选选项后重新加载
-document.querySelector("#videoOption").addEventListener("click", () => {
-    video__pageNumber = 1; //重设要开始加载的页数
-    document.querySelector(
-        ".videoList"
-    ).innerHTML = `                <div class="videoList__col-sizer"></div>
+for (
+    let i = 0;
+    i < document.querySelectorAll("#videoOption label").length;
+    i++
+) {
+    document
+        .querySelectorAll("#videoOption label")
+        [i].addEventListener("click", () => {
+            video__pageNumber = 1; //重设要开始加载的页数
+            document.querySelector(
+                ".videoList"
+            ).innerHTML = `                <div class="videoList__col-sizer"></div>
                 <div class="videoList__gutter-sizer"></div>`; //重设视频列表
-    setTimeout(() => {
-        video__infScroll.loadNextPage();
-    }, 1); //加载下一页（还有我不知道怎么怎么解决这个问题，不知道怎么说，你如果能看到这里把 setTimeout 移除看看。
-});
+            setTimeout(() => {
+                video__infScroll.loadNextPage();
+            }, 1); //加载下一页（还有我不知道怎么怎么解决这个问题，不知道怎么说，你如果能看到这里把 setTimeout 移除看看。
+        });
+}
 
 // 此处定义一下一个视频卡片物件的 HTML 代码
 function getVideoItemHTML({ title, name, pic, aid }) {
-    return `<a class="videoCard" href="https://bilibili.com/video/av${aid}">
+    return `<a class="videoCard" href="https://bilibili.com/video/av${aid}" onclick="video('${aid}');return false;">
     <img src = "${pic}" loading="lazy" onload="AgainLayout()" />
     <div>
         <div>${title}</div>
@@ -223,10 +264,9 @@ picture__infScroll.on("load", function (body) {
     picture__proxyElem.innerHTML = picture__itemsHTML;
     // 添加元素物件
     let picture__items = picture__proxyElem.querySelectorAll(".pictureCard");
-    imagesLoaded(picture__items, function () {
-        picture__infScroll.appendItems(picture__items);
-        picture__msnry.appended(picture__items);
-    });
+
+    picture__infScroll.appendItems(picture__items);
+    picture__msnry.appended(picture__items);
 
     setTimeout(() => {
         debounce(AgainLayout, 500, false); //加载七百毫秒后重新排列
@@ -239,7 +279,7 @@ picture__infScroll.loadNextPage();
 // 此处定义一下一个视频卡片物件的 HTML 代码
 // 不好意思 这边加载完一个就layout一次可能对低性能设备不太友好 不知道怎么解决 后面应该会加上防抖
 function getPictureItemHTML({ username, firstPicture, dynamicIDStr }) {
-    return `<a class="pictureCard" href="https://t.bilibili.com/${dynamicIDStr}">
+    return `<a class="pictureCard" href="https://t.bilibili.com/${dynamicIDStr}" onclick="dynamic('${dynamicIDStr}');return false;">
     <img src = "${firstPicture}" loading="lazy" onload="AgainLayout()" />
     <div>
         <div></div>
@@ -278,15 +318,59 @@ picture__msnry.on("layoutComplete", function () {
 // 图片列表 部分脚本 结束 //
 
 function AgainLayout() {
-        video__msnry.layout();
-        picture__msnry.layout();
+    video__msnry.layout();
+    picture__msnry.layout();
 }
 // 窗口大小变化时重新整理卡片位置
 
-
-
-
-
-
-
 window.addEventListener("resize", debounce(AgainLayout, 500, false));
+
+// 设置 部分脚本 开始 //
+
+// 记住打开方式选项并自动选择
+function setOpenWayRadio(option) {
+    //设置打开方式的选项
+    let Radio = document.querySelectorAll("#OpenWayOption label input");
+    for (let i = 0; i < Radio.length; i++) {
+        if (Radio[i].getAttribute("value") == option) {
+            Radio[i].checked = true;
+        }
+    }
+}
+
+document.getElementById("settings").addEventListener("click", () => {
+    //打开设置对话框
+    document.getElementById("settings_dialog").showModal();
+});
+
+document
+    .getElementById("settings_dialog")
+    .addEventListener("close", (event) => {
+        //关闭设置对话框
+        if (getRadioValueByName("open_bilibili") == undefined) {
+            localStorage.setItem("open_bilibili", "website");
+        } else {
+            localStorage.setItem(
+                "open_bilibili",
+                getRadioValueByName("open_bilibili")
+            );
+        }
+    OpenWay = localStorage.getItem("open_bilibili");});
+
+if (OpenWay == null) {
+    localStorage.setItem("open_bilibili", "website");
+    setOpenWayRadio("website");
+} else {
+    setOpenWayRadio(OpenWay);
+}
+
+
+
+
+
+
+
+
+
+
+

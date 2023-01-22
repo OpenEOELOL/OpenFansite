@@ -6,6 +6,37 @@ html body {
     max-width: none !important;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* 对不起🧎‍♀️ 不应该这么写的 */
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+dialog {
+    /* margin: 0 auto; */
+    border-radius: 0;
+    width: 100%;
+}
+
+@media screen and (min-width: 500px) {
+    dialog {
+        width: 100%;
+        max-width: 27rem;
+    }
+}
+
+dialog::-webkit-scrollbar {
+    width: 8px;
+}
+
 #header {
     background-color: var(--main-color);
     height: 2.63rem;
@@ -30,12 +61,7 @@ html body {
     justify-content: space-around;
     align-items: center;
     height: 100%;
-}
-
-@media screen and (min-width: 1200px) {
-    #headerLeft {
-        margin-left: 0.9rem;
-    }
+    margin-left: 0.9rem;
 }
 
 .menu {
@@ -67,6 +93,19 @@ html body {
     color: var(--header-text-color);
     text-decoration: none;
     margin: 0 5px 0 5px;
+}
+
+#settings {
+    margin: 0;
+    border-radius: 0;
+    transition: 1s cubic-bezier(var(--cubic-bezier));
+    background-color: var(--accent-color);
+    color: var(--background-body);
+}
+
+#settings:active {
+    transform: scale(90%);
+    background-color: var(--header-text-color);
 }
 
 .active {
@@ -243,7 +282,7 @@ html body {
     align-items: flex-end;
 }
 
-#bannerButton {
+.bannerButton {
     margin: 0 1.5rem 1rem 0;
     background: rgba(25, 25, 25, 0.48);
     border: 0 solid rgba(0, 0, 0, 0);
@@ -257,19 +296,19 @@ html body {
     backdrop-filter: blur(10px);
 }
 
-#bannerButton > img {
+.bannerButton > img {
     transform: rotate(180deg);
     height: 1em;
     display: inline-block;
     vertical-align: middle;
 }
 
-#bannerButton > span {
+.bannerButton > span {
     display: inline-block;
     vertical-align: middle;
 }
 
-#bannerButton:hover {
+.bannerButton:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -380,12 +419,10 @@ html body {
 }
 
 .view-more-button {
-    width: 100%;
-    height: 25vh;
     font-size: 2rem;
-    border: 0;
-    border-top: 0.1rem solid var(--accent-color);
-    background-color: rgba(0, 0, 0, 0);
+    border: 0.1rem solid var(--accent-color);
+    background-color: var(--button-base);
+    margin: 1rem auto;
 }
 
 .tips {
@@ -446,7 +483,8 @@ html body {
 
 .hide {
     transition: 1s cubic-bezier(var(--cubic-bezier));
-    -webkit-animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1 forwards;
-            animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1 forwards;
+    -webkit-animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1
+        forwards;
+    animation: hide 0.5s cubic-bezier(var(--cubic-bezier)) 0.3s 1 forwards;
 }
 
