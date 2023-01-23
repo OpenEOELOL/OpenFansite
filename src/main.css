@@ -61,7 +61,7 @@ dialog::-webkit-scrollbar {
 
 .img {
     width: 100%;
-    max-width: 15rem;
+    max-width: 10rem;
     display: block;
     margin: 0 auto;
 }
