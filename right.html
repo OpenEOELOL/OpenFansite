@@ -79,7 +79,7 @@
         // 不好意思 这边加载完一个就layout一次可能对低性能设备不太友好 不知道怎么解决 后面应该会加上防抖
         function getPictureItemHTML({ username, firstPicture }) {
             return `<a class="pictureCard" >
-    <img src = "${firstPicture}" loading="lazy" onload="AgainLayout()" />
+    <img src = "${firstPicture}@1e_1c.webp" loading="lazy" onload="AgainLayout()" />
     <div>
         <div></div>
         <div>[UP]${eval("'" + username + "'")}</div>

@@ -18,6 +18,8 @@
 
 <body>
     <!-- <div class="alert">placeholder</div> -->
+    <div class="FirstTime"><b class="tips" style="font-size: 1rem;">切换选项卡来看更多</b><img src="./example/tip.png"
+            alt="切换选项卡演示"><span>点击隐藏且不再显示</span></div>
     <header id="header">
         <div class="menu">
             <div id="headerLeft">
@@ -98,11 +100,10 @@
                         </button>
                     </div>
                 </div>
-                <i class="tips flash">切换选项卡查看更多内容</i>
                 <img src="./src/依托蛞蝓.svg" style="height: 20%; margin: 2rem" />
             </div>
             <div class="right">
-                <iframe src="right.html" seamless sandbox="allow-same-origin allow-scripts"></iframe>
+                <iframe src="right.html" seamless sandbox="allow-same-origin allow-scripts" loading="lazy"></iframe>
                 <div class="mask_DONT_Hide"
                     style="width: 50%; align-items: flex-end; background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,var(--homepage-background-color));">
                     <div class="tips" style="font-size: 1.2rem;padding-bottom: 5rem;">更多图片请切换到“图片”选项卡</div>
@@ -147,7 +148,10 @@
                 <div class="page-load-status" id="videoStatus">
                     <p class="infinite-scroll-request">正在准备内容</p>
                     <p class="infinite-scroll-last">没有更多内容了</p>
-                    <p class="infinite-scroll-error">不能再加载了/也有可能是服务器错误</p>
+                    <p class="infinite-scroll-error">不能再加载了/也有可能是服务器错误<br><br>
+                        <a href="https://b23.tv/av565443822" onclick="video('565443822');return false;"><img
+                                src="./src/av565443822.png" alt="危险派对封面" class="img"></a>我劝你多看
+                    </p>
                 </div>
                 <button class="view-more-button" id="videoList_viewmore">
                     加载更多
@@ -175,7 +179,10 @@
         </div>
 
         <!-- 工具 -->
-        <div id="tools" class="page">哎呀米诺</div>
+        <div id="tools" class="page"><button onclick="localStorage.clear();"><i class="icon"
+                    style="padding-right:1rem;">pan_tool</i>孟婆汤</button>
+                孟婆汤 属性：会让本网站忘记所有的数据
+                </div>
     </div>
 
     <script src="./src/masonry.pkgd.min.js"></script>
