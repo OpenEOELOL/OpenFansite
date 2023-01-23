@@ -215,7 +215,7 @@ for (
 // 此处定义一下一个视频卡片物件的 HTML 代码
 function getVideoItemHTML({ title, name, pic, aid }) {
     return `<a class="videoCard" href="https://bilibili.com/video/av${aid}" onclick="video('${aid}');return false;">
-    <img src = "${pic}" loading="lazy" onload="AgainLayout()" />
+    <img src = "${pic}@1e_1c.webp" loading="lazy" onload="AgainLayout()" />
     <div>
         <div>${title}</div>
         <div>[UP]${name}</div>
@@ -280,7 +280,7 @@ picture__infScroll.loadNextPage();
 // 不好意思 这边加载完一个就layout一次可能对低性能设备不太友好 不知道怎么解决 后面应该会加上防抖
 function getPictureItemHTML({ username, firstPicture, dynamicIDStr }) {
     return `<a class="pictureCard" href="https://t.bilibili.com/${dynamicIDStr}" onclick="dynamic('${dynamicIDStr}');return false;">
-    <img src = "${firstPicture}" loading="lazy" onload="AgainLayout()" />
+    <img src = "${firstPicture}@1e_1c.webp" loading="lazy" onload="AgainLayout()" />
     <div>
         <div></div>
         <div>[UP]${eval("'" + username + "'")}</div>
@@ -388,4 +388,6 @@ WebFont.load({
 });
 
 // 配置应用 部分脚本 结束 //
+
+
 
