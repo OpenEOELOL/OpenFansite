@@ -1,5 +1,6 @@
 <div align="center">
 <strong>现在主线开发目标尚未完成，半成品都不算，暂不推荐在生产环境内使用。</strong>
+代码很不好看，请多指教。
 <br><br>
 
 ![图标](./src/EOELOL.png)
