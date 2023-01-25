@@ -210,6 +210,9 @@ for (
                 <div class="videoList__gutter-sizer"></div>`; //重设视频列表
             setTimeout(() => {
                 video__infScroll.loadNextPage();
+                setTimeout(() => {
+                    debounce(AgainLayout, 500, false); //加载七百毫秒后重新排列
+                }, 700);
             }, 1); //加载下一页（还有我不知道怎么怎么解决这个问题，不知道怎么说，你如果能看到这里把 setTimeout 移除看看。
         });
 }
@@ -403,6 +406,7 @@ FirstTimeEle.addEventListener("click", () => {
     localStorage.setItem("FirstTime", "done");
     FirstTimeEle.classList.remove("show")
 });
+
 
 
 
