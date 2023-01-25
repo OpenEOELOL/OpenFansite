@@ -458,6 +458,16 @@ dialog::-webkit-scrollbar {
     border-radius: var(--radius);
     vertical-align: bottom;
     -webkit-user-drag: none;
+        -o-object-fit: cover;
+       object-fit: cover; /* 使图片不拉伸 */
+}
+
+.videoCard > img {
+    aspect-ratio: 16/10; /* 使用这个属性保持一个图片的宽高比 改善 cls */
+}
+
+.pictureCard > img {
+    max-height: 86vh;
 }
 
 .videoCard > div,
