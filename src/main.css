@@ -530,6 +530,9 @@ dialog::-webkit-scrollbar {
 
 .option {
     position: relative;
+    max-width: 50rem;
+    margin: 0 auto;
+    font-size: 0.7rem;
 }
 
 @-webkit-keyframes hide {
