@@ -1,7 +1,7 @@
 /* 字体调整 */
 @font-face {
     font-family: "LXGWFasmartGothic";
-    src: url("./src/霞鹭尚智黑.woff2") format("woff");
+    src: url("/assets/font/霞鹭尚智黑.woff2") format("woff");
     font-weight: normal;
     font-style: normal;
 }

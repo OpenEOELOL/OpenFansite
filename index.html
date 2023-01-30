@@ -7,18 +7,17 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="theme-color" content="#0ED242" />
-    <link rel="shortcut icon" href="./favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
     <title>Powered by OpenEOELOL/OpenFansite</title>
-    <script src="config.js"></script>
-    <link rel="stylesheet" href="./src/water.min.css" />
-    <link rel="stylesheet" href="./src/material-icon.css" />
-    <link rel="stylesheet" href="./custom.css" />
-    <link rel="stylesheet" href="./src/main.css" />
+    <link rel="stylesheet" href="/src/styles/water.min.css" />
+    <link rel="stylesheet" href="/src/styles/material-icon.css" />
+    <link rel="stylesheet" href="/src/styles/custom.css" />
+    <link rel="stylesheet" href="/src/page/index/main.css" />
 </head>
 
 <body>
     <!-- <div class="alert">placeholder</div> -->
-    <div class="FirstTime"><b class="tips" style="font-size: 1rem;">切换选项卡来看更多</b><img src="./example/tip.png"
+    <div class="FirstTime"><b class="tips" style="font-size: 1rem;">切换选项卡来看更多</b><img src="/example/tip.png"
             alt="切换选项卡演示"><br><span>点击隐藏且不再显示</span></div>
     <header id="header">
         <div class="menu">
@@ -100,10 +99,10 @@
                         </button>
                     </div>
                 </div>
-                <img src="./src/依托蛞蝓.svg" style="height: 20%; margin: 2rem" />
+                <img src="/assets/svg/依托蛞蝓.svg" style="height: 20%; margin: 2rem" />
             </div>
             <div class="right">
-                <iframe src="right.html" seamless sandbox="allow-same-origin allow-scripts" loading="lazy"></iframe>
+                <iframe src="./right.html" seamless sandbox="allow-same-origin allow-scripts" loading="lazy"></iframe>
                 <div class="mask_DONT_Hide"
                     style="width: 50%; align-items: flex-end; background-image: linear-gradient(180deg,rgba(0, 0, 0, 0),var(--homepage-background-color));">
                     <div class="tips" style="font-size: 1.2rem;padding-bottom: 5rem;">更多图片请切换到“图片”选项卡</div>
@@ -151,7 +150,7 @@
                         <br><a href="./legacy-video.html">若无法加载，点击此处切换到 EOE.LOL 服务器</a>
                     <div>
                         <a href="https://b23.tv/av565443822" onclick="video('565443822');return false;">
-                            <img src="./src/av565443822.png" alt="危险派对封面" class="img" loading="lazy">
+                            <img src="/assets/picture/av565443822.png" alt="危险派对封面" class="img" loading="lazy">
                         </a>我劝你多看
                     </div>
                     </p>
@@ -188,11 +187,7 @@
         </div>
     </div>
 
-    <script src="./src/masonry.pkgd.min.js"></script>
-    <script src="./src/infinite-scroll.pkgd.min.js"></script>
-    <script src="./src/webfont.js"></script>
-    <script src="./src/limit.js"></script>
-    <script src="./src/main.js"></script>
+    <script type="module" src="./src/page/index/main.js"></script>
 </body>
 
 </html>
