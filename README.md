@@ -3,7 +3,7 @@
 代码很不好看，请多指教。
 <br><br>
 
-![图标](./src/EOELOL.png)
+![图标](./assets/picture/EOELOL.png)
 
 # OpenFansite
 
