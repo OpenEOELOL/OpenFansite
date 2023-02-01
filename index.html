@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="never" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#0ED242" />
+    <link rel="shortcut icon" href="/OpenFansite/favicon.png">
+    <title>Powered by OpenEOELOL/OpenFansite</title>
+    
+    
+    
+    
+  <script type="module" crossorigin src="/OpenFansite/assets/main-5e9bb213.js"></script>
+  <link rel="modulepreload" crossorigin href="/OpenFansite/assets/limit-88b67c54.js">
+  <link rel="modulepreload" crossorigin href="/OpenFansite/assets/webfontloader-88599fb4.js">
+  <link rel="stylesheet" href="/OpenFansite/assets/index-f0f89b32.css">
+  <link rel="stylesheet" href="/OpenFansite/assets/main-6eff727f.css">
+</head>
+
+<body>
+    <!-- <div class="alert">placeholder</div> -->
+    <div class="FirstTime"><b class="tips" style="font-size: 1rem;">切换选项卡来看更多</b><img src="/OpenFansite/assets/tip-4dc10497.png"
+            alt="切换选项卡演示"><br><span>点击隐藏且不再显示</span></div>
+    <header id="header">
+        <div class="menu">
+            <div id="headerLeft">
+                <span id="headerTitle">OpenFansite</span>
+                <div id="tab">
+                    <a href="#homepage">
+                        <div>主页</div>
+                    </a>
+                    <a href="#videopage">
+                        <div>视频</div>
+                    </a>
+                    <a href="#picpage">
+                        <div>好图</div>
+                    </a>
+                    <a href="#tools">
+                        <div>工具</div>
+                    </a>
+                </div>
+            </div>
+            <div id="headerRight">
+                <button id="settings" type="button">
+                    <i class="icon">settings</i><span>设置与关于</span>
+                </button>
+                <dialog id="settings_dialog">
+                    <header>设置与关于</header>
+                    <form method="dialog">
+                        <h2>打开方式</h2>
+                        <div id="OpenWayOption">
+                            <label>
+                                <input type="radio" name="open_bilibili" value="app" />
+                                <b>哔哩哔哩应用</b>打开
+                            </label>
+                            <label>
+                                <input type="radio" name="open_bilibili" value="uwp" />
+                                <b>云之幻 / 哔哩</b> UWP 播放视频，<b>哔哩哔哩网页端</b>查看动态。
+                            </label>
+                            <label>
+                                <input type="radio" name="open_bilibili" value="website" />
+                                <b>哔哩哔哩网页端</b>打开
+                            </label>
+                            <br><i class="tips">哔哩哔哩应用包括“哔哩哔哩”与“哔哩哔哩HD”。</i>
+                        </div>
+                        <h2>关于</h2>
+                        <p>部分数据由 EOEFans、EOELOL 提供。</p>
+                        <span>程序为 KurisuCat 以及其余 OpenFansite 前端与后端代码贡献者 版权所有。任何衍生项目必须遵守 LGPL-2.1 协议。</span>
+                        <a href="https://github.com/OpenEOELOL/OpenFansite">更多内容请前往 OpenFansite 仓库查看。</a>
+                        <details>
+                            <summary>免责声明</summary>
+                            <p>　　本页面提供的任何数据为哔哩哔哩抓取内容，我（站长 KurisuCat）不承担因此内容带来的风险。<br>
+                                　　本站仅为个人性质的视频列表收录站点。从建站开始，从未有意标榜或冒充是“哔哩哔哩”官方网站或“EOE组合”官方网站。请认准“哔哩哔哩”官方网站 （bilibili.com）
+                                以及“EOE组合”官方账号（https://space.bilibili.com/2018113152）<br>
+                                　　本站不保证指向外部的链接为安全链接，请仔细甄别。<br>　　本项目仅作个人学习编程所写，我不承担因本项目带来的风险。（此处所指的风险包括但不限于在生产环境中使用、传播性质恶劣的内容）
+                            </p>
+                        </details>
+                        <details>
+                            <summary>赞助</summary>
+                            <p>赞助可以帮助我们开发 OpenFansite 以及为 EOELOL 服务续期，或改善服务以及开发者环境。</p>
+                            <a href="https://afdian.net/a/kurisucat">前往爱发电</a>
+                        </details>
+
+                        <button><i class="icon" style="padding-right:1rem;">check</i>完成</button>
+                    </form>
+                </dialog>
+            </div>
+        </div>
+    </header>
+    <div id="Pages">
+        <!-- 主页 -->
+        <div id="homepage" class="page">
+
+            <div class="left">
+                <div class="websiteNameForMobile">OpenFansite</div>
+                <div class="banner">
+                    <div>
+                        <button class="bannerButton" type="link" style="display:none; ">
+                            <span>立即查看</span>
+                            <i class="icon">keyboard_arrow_right</i>
+                        </button>
+                    </div>
+                </div>
+                <img src="/OpenFansite/assets/依托蛞蝓-cdfa3c3e.svg" style="height: 20%; margin: 2rem" />
+            </div>
+            <div class="right">
+                <iframe src="./right.html" seamless sandbox="allow-same-origin allow-scripts" loading="lazy"></iframe>
+                <div class="mask_DONT_Hide"
+                    style="width: 50%; align-items: flex-end; background-image: linear-gradient(180deg,rgba(0, 0, 0, 0),var(--homepage-background-color));">
+                    <div class="tips" style="font-size: 1.2rem;padding-bottom: 5rem;">更多图片请切换到“图片”选项卡</div>
+                </div>
+            </div>
+        </div>
+        <!-- 视频 -->
+        <div id="videopage" class="page">
+            <div>
+                <div class="tips">EOEFans 提供</div>
+                <div class="option" id="videoOption">
+                    <div class="mask hide">加载中...</div>
+                    <h2>筛选</h2>
+                    <label>
+                        <input type="radio" name="video__copyright" value="1" checked />
+                        原创
+                    </label>
+                    <label>
+                        <input type="radio" name="video__copyright" value="2" />
+                        切片
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" name="video__order" value="pubdate" />
+                        最新发布
+                    </label>
+                    <label>
+                        <input type="radio" name="video__order" value="view" />
+                        最多播放
+                    </label>
+                    <label>
+                        <input type="radio" name="video__order" value="score" checked />
+                        最推荐看
+                    </label>
+                </div>
+                <div class="videoList" id="videoList">
+                    <div class="videoList__col-sizer"></div>
+                    <div class="videoList__gutter-sizer"></div>
+                </div>
+
+                <div class="page-load-status" id="videoStatus">
+                    <p class="infinite-scroll-request">正在准备内容</p>
+                    <p class="infinite-scroll-last">没有更多内容了</p>
+                    <p class="infinite-scroll-error">不能再加载了/也有可能是服务器错误
+                        <br><a href="./legacy-video.html">若无法加载，点击此处切换到 EOE.LOL 服务器</a>
+                    <div>
+                        <a href="https://b23.tv/av565443822" onclick="video('565443822');return false;">
+                            <img src="/OpenFansite/assets/av565443822-73b58506.png" alt="危险派对封面" class="img" loading="lazy">
+                        </a>我劝你多看
+                    </div>
+                    </p>
+                </div>
+                <button class="view-more-button" id="videoList_viewmore">
+                    加载更多
+                </button>
+            </div>
+        </div>
+
+        <!-- 图片 -->
+        <div id="picpage" class="page">
+            <div class="tips">EOELOL 提供</div>
+            <div class="option"><a href="./eoefans-picture.html">切换到 EOEFans，获得更好体验。</a></div>
+            <div class="pictureList">
+                <div class="pictureList__col-sizer"></div>
+                <div class="pictureList__gutter-sizer"></div>
+            </div>
+
+            <div class="page-load-status" id="pictureStatus">
+                <p class="infinite-scroll-request">正在准备内容</p>
+                <p class="infinite-scroll-last">没有更多内容了</p>
+                <p class="infinite-scroll-error">不能再加载了</p>
+            </div>
+            <button class="view-more-button" id="pictureList_viewmore">
+                加载更多
+            </button>
+        </div>
+
+        <!-- 工具 -->
+        <div id="tools" class="page"><button onclick="localStorage.clear();"><i class="icon"
+                    style="padding-right:1rem;">pan_tool</i>孟婆汤</button>
+            孟婆汤 属性：会让本网站忘记所有的数据
+        </div>
+    </div>
+
+    
+</body>
+
+</html>
