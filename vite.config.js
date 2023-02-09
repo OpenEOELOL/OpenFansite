@@ -1,7 +1,6 @@
 // vite.config.js
 import { resolve } from "path";
 import { defineConfig } from "vite";
-
 export default defineConfig({
   base: "/OpenFansite/",
   resolve: {
@@ -17,6 +16,13 @@ export default defineConfig({
         eoefans: resolve(__dirname, "eoefans-picture.html"),
         videos: resolve(__dirname, "legacy-video.html"),
       },
+      output: {
+        manualChunks: {
+          'infinite-scroll': ['infinite-scroll'],
+          'masonry-layout': ['masonry-layout'],
+          webfontloader: ['webfontloader'],
+        }
+      }
     },
   },
 });

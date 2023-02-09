@@ -1,14 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
-  a11y-dialog: ^7.5.2
   infinite-scroll: ^4.0.1
   masonry-layout: ^4.2.2
   vite: ^4.0.0
   webfontloader: ^1.6.28
 
 dependencies:
-  a11y-dialog: 7.5.2
   infinite-scroll: 4.0.1
   masonry-layout: 4.2.2
   webfontloader: 1.6.28
@@ -216,12 +214,6 @@ packages:
     dev: true
     optional: true
 
-  /a11y-dialog/7.5.2:
-    resolution: {integrity: sha512-zfWtVvrbGbP3AFnEJ1aJFtu7GvedgjOEKbkyEUSeaNWDzmFJk9O5nuolDQrRDyRDE5fqSJRiBJtD5bUYKveoUg==}
-    dependencies:
-      focusable-selectors: 0.4.0
-    dev: false
-
   /desandro-matches-selector/2.0.2:
     resolution: {integrity: sha512-+1q0nXhdzg1IpIJdMKalUwvvskeKnYyEe3shPRwedNcWtnhEKT3ZxvFjzywHDeGcKViIxTCAoOYQWP1qD7VNyg==}
     dev: false
@@ -272,10 +264,6 @@ packages:
 
   /fizzy-ui-utils/3.0.0:
     resolution: {integrity: sha512-uJj38QFQiJ/KCio5tiZhwAjIbTXSIgzBCKdKVbaYfLS053F6z23Nb0o1ZoO9gnxOQWN7BCc35jsvrCtAq3gY9g==}
-    dev: false
-
-  /focusable-selectors/0.4.0:
-    resolution: {integrity: sha512-tc/236hUU3xemsRLu1RKhRQ5UWHjRM9iJTli1zdac43h7b1biRSgG0mILM0qrcsKaGCHcOPJ6NKbk12ouKHLpw==}
     dev: false
 
   /fsevents/2.3.2:
