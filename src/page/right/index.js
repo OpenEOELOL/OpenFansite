@@ -1,6 +1,12 @@
 import Masonry from "masonry-layout";
 import InfiniteScroll from "infinite-scroll";
 import { debounce } from "@/utils/limit";
+
+import '@/styles/water.min.css';
+import '@/styles/material-icon.css'
+import '@/styles/custom.css'
+import '@/page/index/main.css'
+
 let picture__msnry = new Masonry(".pictureList", {
   itemSelector: ".pictureCard",
   columnWidth: ".pictureList__col-sizer",

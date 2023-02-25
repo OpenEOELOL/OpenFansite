@@ -2,6 +2,12 @@ import Masonry from "masonry-layout";
 import InfiniteScroll from "infinite-scroll";
 import { debounce } from "@/utils/limit";
 import WebFont from "webfontloader";
+
+import '@/styles/water.min.css';
+import '@/styles/material-icon.css'
+import '@/styles/custom.css'
+import '@/page/index/main.css'
+
 const { VITE_APP_EOEFansKey: EOEFansKey, VITE_APP_SiteName: siteName } =
   import.meta.env;
 let OpenWay = localStorage.getItem("open_bilibili"); // 如何打开哔哩哔哩？
