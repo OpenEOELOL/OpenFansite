@@ -13,8 +13,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         right: resolve(__dirname, "right.html"),
-        eoefans: resolve(__dirname, "eoefans-picture.html"),
-        videos: resolve(__dirname, "legacy-video.html"),
+        /*eoefans: resolve(__dirname, "eoefans-picture.html"),
+        videos: resolve(__dirname, "legacy-video.html"), */
       },
       output: {
         manualChunks: {
