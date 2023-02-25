@@ -12,7 +12,6 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "a11y-dialog": "^7.5.2",
     "infinite-scroll": "^4.0.1",
     "masonry-layout": "^4.2.2",
     "webfontloader": "^1.6.28"
