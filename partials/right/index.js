@@ -2,28 +2,23 @@ import Masonry from "masonry-layout";
 import InfiniteScroll from "infinite-scroll";
 import { debounce } from "@/utils/limit";
 
-import '@/styles/water.min.css';
-import '@/styles/material-icon.css'
-import '@/styles/custom.css'
-import '@/page/index/main.css'
-
-let picture__msnry = new Masonry(".pictureList", {
-  itemSelector: ".pictureCard",
-  columnWidth: ".pictureList__col-sizer",
-  gutter: ".pictureList__gutter-sizer",
+let picture__msnry = new Masonry("#right .pictureList", {
+  itemSelector: "#right .pictureCard",
+  columnWidth: "#right .pictureList__col-sizer",
+  gutter: "#right .pictureList__gutter-sizer",
   percentPosition: true,
   transitionDuration: 0,
   stagger: 30,
 });
 
 // 无限滚动插件初始化
-let picture__infScroll = new InfiniteScroll(".pictureList", {
+let picture__infScroll = new InfiniteScroll("#right .pictureList", {
   path: function () {
     return `https://api.eoe.lol/apiDynamic/${this.pageIndex}`;
   },
   responseBody: "json", // 响应体为 JSON 格式
   outlayer: picture__msnry,
-  status: "#pictureStatus", // 加载状态
+  status: "#right #pictureStatus", // 加载状态
   history: false, // 不展示历史
   // prefill: true, // 预先加载
   scrollThreshold: false, // 不需要滚动到底部加载
@@ -32,7 +27,7 @@ function AgainLayout() {
   picture__msnry.layout();
 }
 const loadWatcher = () => {
-  [...document.querySelectorAll(".pictureCard img")].map((img) =>
+  [...document.querySelectorAll("#right .pictureCard img")].map((img) =>
     img.addEventListener(
       "load",
       (ev) => {
@@ -47,6 +42,7 @@ const loadWatcher = () => {
 var picture__proxyElem = document.createElement("div");
 
 picture__infScroll.on("load", function (body) {
+  console.log("body", body);
   // 数据转入 HTML 字符串
   var picture__itemsHTML = body["data"].map(getPictureItemHTML).join("");
   // 将 HTML 字符串转入到元素

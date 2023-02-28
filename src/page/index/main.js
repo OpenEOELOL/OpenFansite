@@ -3,11 +3,11 @@ import InfiniteScroll from "infinite-scroll";
 import { debounce } from "@/utils/limit";
 import WebFont from "webfontloader";
 
-import '@/styles/water.min.css';
-import '@/styles/material-icon.css'
-import '@/styles/custom.css'
-import '@/page/index/main.css'
-
+import "@/styles/water.min.css";
+import "@/styles/material-icon.css";
+import "@/styles/custom.css";
+import "@/page/index/main.css";
+// FIXME: added "#picpage" to the class selector
 const { VITE_APP_EOEFansKey: EOEFansKey, VITE_APP_SiteName: siteName } =
   import.meta.env;
 let OpenWay = localStorage.getItem("open_bilibili"); // 如何打开哔哩哔哩？
@@ -17,6 +17,8 @@ function AgainLayout() {
   picture__msnry.layout();
 }
 // 视频打开逻辑
+
+//FIXME: transform to a addEventListener
 function video(videoID) {
   let link;
   if (OpenWay == "app") {
@@ -30,6 +32,7 @@ function video(videoID) {
   }
 }
 
+//FIXME: transform to a addEventListener
 function dynamic(dynamicID) {
   let link;
   if (OpenWay == "app") {
@@ -243,7 +246,7 @@ function getVideoItemHTML({ title, name, pic, aid }) {
 // (这段其实压根就不是我写的 参考 Masonry 和 InfiniteScroll 官网展示的 codepen)
 
 // 瀑布流插件初始化
-let picture__msnry = new Masonry(".pictureList", {
+let picture__msnry = new Masonry("#picpage .pictureList", {
   itemSelector: ".pictureCard",
   columnWidth: ".pictureList__col-sizer",
   gutter: ".pictureList__gutter-sizer",
@@ -256,24 +259,24 @@ let picture__msnry = new Masonry(".pictureList", {
 });
 
 // 无限滚动插件初始化
-let picture__infScroll = new InfiniteScroll(".pictureList", {
+let picture__infScroll = new InfiniteScroll("#picpage .pictureList", {
   path: function () {
     return `https://api.eoe.lol/apiDynamic/${this.pageIndex}`;
   },
   responseBody: "json", // 响应体为 JSON 格式
   outlayer: picture__msnry,
-  status: "#pictureStatus", // 加载状态
+  status: "#picpage #pictureStatus", // 加载状态
   history: false, // 不展示历史
   // prefill: true, // 预先加载
   scrollThreshold: false, // 不需要滚动到底部加载
-  button: "#pictureList_viewmore", // 展示更多按钮定义
+  button: "#picpage #pictureList_viewmore", // 展示更多按钮定义
 });
 
 // 转换 HTML 字符串到元素，用代理元素。
 var picture__proxyElem = document.createElement("div");
 
 const loadWatcher = () => {
-  [...document.querySelectorAll(".pictureCard img")].map((img) =>
+  [...document.querySelectorAll("#picpage .pictureCard img")].map((img) =>
     img.addEventListener(
       "load",
       (ev) => {

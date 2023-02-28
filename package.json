@@ -14,6 +14,7 @@
   "dependencies": {
     "infinite-scroll": "^4.0.1",
     "masonry-layout": "^4.2.2",
+    "vite-plugin-handlebars": "^1.6.0",
     "webfontloader": "^1.6.28"
   }
 }
