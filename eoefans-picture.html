@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="never" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#0ED242" />
+    <link rel="shortcut icon" href="/OpenFansite/favicon.png">
+    <title>Powered by OpenEOELOL/OpenFansite</title>
+  <script type="module" crossorigin src="/OpenFansite/assets/eoefans-d0e8360c.js"></script>
+  <link rel="modulepreload" crossorigin href="/OpenFansite/assets/main-49cf7034.js">
+  <link rel="modulepreload" crossorigin href="/OpenFansite/assets/infinite-scroll-530e71ba.js">
+  <link rel="modulepreload" crossorigin href="/OpenFansite/assets/masonry-layout-f99d37ca.js">
+  <link rel="modulepreload" crossorigin href="/OpenFansite/assets/webfontloader-88599fb4.js">
+  <link rel="stylesheet" href="/OpenFansite/assets/main-fa623879.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="menu">
+            <div id="headerLeft">
+                <div id="tab">
+                    <a href="..#picpage">
+                        <div>切换到 EOE.LOL</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="Pages">
+        <!-- 视频 -->
+        <div id="picturepage" class="page">
+            <div>
+                <div class="tips">EOEFans 提供</div>
+                <div class="option" id="pictureOption">
+                    <div class="mask hide">加载中...</div>
+                    <h2>筛选</h2>
+                    <label>
+                        <input type="radio" name="picture__type" value="recommend" checked />
+                        推荐
+                    </label>
+                    <label>
+                        <input type="radio" name="picture__type" value="latest" />
+                        最新
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" name="picture__member" value="28953983" />
+                        莞儿
+                    </label>
+                    <label>
+                        <input type="radio" name="picture__member" value="28950030" />
+                        柚恩
+                    </label>
+                    <label>
+                        <input type="radio" name="picture__member" value="29067608" checked />
+                        露早
+                    </label>
+                    <label>
+                        <input type="radio" name="picture__member" value="28948378" checked />
+                        虞莫
+                    </label>
+                    <label>
+                        <input type="radio" name="picture__member" value="29069147" checked />
+                        米诺
+                    </label>
+                    <label>
+                        <input type="radio" name="picture__member" value="29156150" checked />
+                        EOE
+                    </label>
+                </div>
+                <div class="pictureList" id="pictureList">
+                    <div class="pictureList__col-sizer"></div>
+                    <div class="pictureList__gutter-sizer"></div>
+                </div>
+
+                <div class="page-load-status" id="pictureStatus">
+                    <p class="infinite-scroll-request">正在准备内容</p>
+                    <p class="infinite-scroll-last">没有更多内容了</p>
+                    <p class="infinite-scroll-error">不能再加载了/也有可能是服务器错误</p>
+                </div>
+                <button class="view-more-button" id="pictureList_viewmore">
+                    加载更多
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</body>
+
+</html>

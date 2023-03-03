@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#0ED242" />
     <link rel="shortcut icon" href="/OpenFansite/favicon.png">
     <title>Powered by OpenEOELOL/OpenFansite</title>
-  <script type="module" crossorigin src="/OpenFansite/assets/main-957afcee.js"></script>
+  <script type="module" crossorigin src="/OpenFansite/assets/main-49e59b8c.js"></script>
   <link rel="modulepreload" crossorigin href="/OpenFansite/assets/main-49cf7034.js">
   <link rel="modulepreload" crossorigin href="/OpenFansite/assets/infinite-scroll-530e71ba.js">
   <link rel="modulepreload" crossorigin href="/OpenFansite/assets/masonry-layout-f99d37ca.js">
@@ -104,7 +104,25 @@
                 <img src="/OpenFansite/assets/依托蛞蝓-cdfa3c3e.svg" style="height: 20%; margin: 2rem" />
             </div>
             <div class="right">
-                <iframe src="./right.html" seamless sandbox="allow-same-origin allow-scripts" loading="lazy"></iframe>
+                <div id="right" style="width: 100%">
+                  <div class="pictureList">
+                    <div class="pictureList__col-sizer"></div>
+                    <div class="pictureList__gutter-sizer"></div>
+                  </div>
+                
+                  <div class="page-load-status" id="pictureStatus">
+                    <p class="infinite-scroll-request">正在准备内容</p>
+                    <p class="infinite-scroll-last">没有更多内容了</p>
+                    <p class="infinite-scroll-error">不能再加载了</p>
+                  </div>
+                  <style>
+                    /* FIXME: set to 46.8% to make it fit the page */
+                    #right .pictureCard {
+                      width: 46.8%;
+                    }
+                  </style>
+                </div>
+                
                 <div class="mask_DONT_Hide"
                     style="width: 50%; align-items: flex-end; background-image: linear-gradient(180deg,rgba(0, 0, 0, 0),var(--homepage-background-color));">
                     <div class="tips" style="font-size: 1.2rem;padding-bottom: 5rem;">更多图片请切换到“图片”选项卡</div>
