@@ -1,0 +1,48 @@
+<div>
+    <div class="tips">EOEFans 提供</div>
+    <div class="option" id="videoOption">
+        <div class="mask hide">加载中...</div>
+        <h2>筛选</h2>
+        <label>
+            <input type="radio" name="video__copyright" value="1" checked />
+            原创
+        </label>
+        <label>
+            <input type="radio" name="video__copyright" value="2" />
+            切片
+        </label>
+        <br />
+        <label>
+            <input type="radio" name="video__order" value="pubdate" />
+            最新发布
+        </label>
+        <label>
+            <input type="radio" name="video__order" value="view" />
+            最多播放
+        </label>
+        <label>
+            <input type="radio" name="video__order" value="score" checked />
+            最推荐看
+        </label>
+    </div>
+    <div class="videoList" id="videoList">
+        <div class="videoList__col-sizer"></div>
+        <div class="videoList__gutter-sizer"></div>
+    </div>
+
+    <div class="page-load-status" id="videoStatus">
+        <p class="infinite-scroll-request">正在准备内容</p>
+        <p class="infinite-scroll-last">没有更多内容了</p>
+        <p class="infinite-scroll-error">不能再加载了/也有可能是服务器错误
+            <br><a href="./legacy-video.html">若无法加载，点击此处切换到 EOE.LOL 服务器</a>
+        <div>
+            <a href="https://b23.tv/av565443822" onclick="video('565443822');return false;">
+                <img src="/assets/picture/av565443822.png" alt="危险派对封面" class="img" loading="lazy">
+            </a>我劝你多看
+        </div>
+        </p>
+    </div>
+    <button class="view-more-button" id="videoList_viewmore">
+        加载更多
+    </button>
+</div>
