@@ -53,10 +53,10 @@
 - EOE 工具人们和米诺、莞儿、虞莫、柚恩、露早。
 - EOES 们
 - 我的家人
-- EOEFans 工作组
-- 哎呀米诺录播组
-- 温暖大家庭的家人们
-- 贡献者们
+- [EOEFans](https://eoefans.com)
+- [哎呀米诺录播组](https://space.bilibili.com/3461563583302074)
+- [温暖大家庭的家人们](https://t.me/Eoesfamily)
+- [贡献者们](https://github.com/OpenEOELOL/OpenFansite/graphs/contributors)
 - masonry，瀑布流布局实现 JavaScript 库。
 
 版权所有 2022-2023 KurisuCat 与本项目代码部分贡献者
