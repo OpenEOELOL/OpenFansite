@@ -40,7 +40,7 @@
 
 我们使用了别的 CDN 加速资源加载速度，您的数据可能会上传到别的服务器。若不喜欢，请注释
 
-- `./src/styles/material-icon.css 文件，第 6 行。并将第 5 行取消注释。`
+- `./src/styles/material-icon.css` 第 6 行；并将第 5 行取消注释。
 
 # 我们如何保证提供的服务与软件不会被你们和我们滥用？
 
@@ -53,7 +53,7 @@
 - EOE 工具人们和米诺、莞儿、虞莫、柚恩、露早。
 - EOES 们
 - 我的家人
-- [EOEFans](https://eoefans.com)
+- [EOEFANS](https://eoefans.club)
 - [哎呀米诺录播组](https://space.bilibili.com/3461563583302074)
 - [温暖大家庭的家人们](https://t.me/Eoesfamily)
 - [贡献者们](https://github.com/OpenEOELOL/OpenFansite/graphs/contributors)
